@@ -65,6 +65,13 @@
   height: 24px;
   margin-right: 5px;
   cursor: pointer;
+  scale: 0.9;
+  opacity: 0.9;
+}
+
+.likeIcon:hover {
+  scale: 1;
+  transition: all 0.5s;
 }
 
 .postLikeCounter {

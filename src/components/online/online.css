@@ -1,0 +1,14 @@
+.rightbarOnline {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: limegreen;
+  position: absolute;
+  top: -2;
+  right: -5px;
+  border: 2px solid white;
+}
+
+.rightbarUsername {
+  font-weight: 500;
+}
