@@ -2,7 +2,7 @@ export const post = [
   {
     id: 1,
     desc: "Love for All, Hatred For None",
-    photo: "assets/post/1.jpeg",
+    photo: "post/1.jpeg",
     date: "5 mins ago",
     userId: 1, 
     like: 13,
@@ -10,7 +10,7 @@ export const post = [
   },
   {
     id: 2,
-    photo: "assets/post/2.jpeg",
+    photo: "post/2.jpeg",
     date: "15 mins ago",
     userId: 2, 
     like: 32,
@@ -19,7 +19,7 @@ export const post = [
   {
     id: 3,
     desc: "Love for All, Hatred For None",
-    photo: "assets/post/3.jpeg",
+    photo: "post/3.jpeg",
     date: "3 mins ago",
     userId: 3, 
     like: 12,
@@ -30,17 +30,17 @@ export const post = [
 export const users = [
   {
     id: 1,
-    profilePicture: "assets/person/1.jpeg",
+    profilePicture: "person/1.jpeg",
     username: "Tarja Turunen"
   },
   {
     id: 2,
-    profilePicture: "assets/person/2.jpeg",
+    profilePicture: "person/2.jpeg",
     username: "Tobias Sammet"
   },
   {
     id: 3,
-    profilePicture: "assets/person/3.jpeg",
+    profilePicture: "person/3.jpeg",
     username: "Bonnie Tyler"
   }
 ]
