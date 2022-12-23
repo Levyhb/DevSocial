@@ -79,7 +79,6 @@ router.get("/:id", async (req, res) => {
 // get timiline posts
 
 router.get("/timeline/:userId", async (req, res) => {
-  // let postArray = [];
   try {
     const currentUser = await User.findById(req.params.userId);
     const userPosts = await Post.find({ userId: currentUser._id });
@@ -89,6 +88,18 @@ router.get("/timeline/:userId", async (req, res) => {
       })
     );
     res.status(200).json(userPosts.concat(...friendPosts));
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Get users all posts
+router.get("/profile/:username", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    const posts = await Post.find({ userId: user._id });
+    res.status(200).json(posts);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

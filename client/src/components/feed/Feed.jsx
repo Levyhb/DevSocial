@@ -10,23 +10,22 @@ export default function Feed({ username }) {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const res = username 
-        ? await axios.get("posts/timeline/63a32233b400011584b611e7")
-        :  await axios.get("posts/timeline/63a32233b400011584b611e7")
+      const res = username
+        ? await axios.get(`/posts/profile/${username}`)
+        : await axios.get("/posts/timeline/63a32233b400011584b611e7");
       setPost(res.data);
-    }
+    };
     fetchPost();
-  }, [])
+  }, [username]);
 
   return (
     <div className="feed">
       <div className="feedWrapper">
         <Share />
-        {posts.map((p) => 
-          <Post key={p._id} post={p}/>
-        )}
-
+        {posts.map((p) => (
+          <Post key={p._id} post={p} />
+        ))}
       </div>
     </div>
-  )
+  );
 }
