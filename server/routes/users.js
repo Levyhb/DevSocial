@@ -15,7 +15,9 @@ router.put("/:id", async (req, res) => {
     }
 
     try {
-      const user = await User.findByIdAndUpdate(req.params.id, { $set: req.body });
+      const user = await User.findByIdAndUpdate(req.params.id, {
+        $set: req.body,
+      });
 
       res.status(200).json("Account has been updated");
     } catch (err) {
@@ -48,13 +50,18 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
+  const userId = req.query.userId;
+  const username = req.query.username;
+  console.log(userId + username);
   try {
-    const { id } = req.params;
-    const user = await User.findById(id);
+    const user = userId
+      ? await User.findById(userId)
+      : await User.findOne({ username: username });
     const { password, updatedAt, ...userInfo } = user._doc;
     res.status(200).json(userInfo);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
