@@ -24,7 +24,7 @@ app.use(helmet());
 app.use(morgan('common'));
 
 app.use('/users', usersRoute);
-app.use('/api', authRoute);
+app.use('/auth', authRoute);
 app.use('/posts', postsRoute);
 
 

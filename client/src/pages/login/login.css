@@ -78,9 +78,14 @@
   text-align: center;
 }
 
-.loginRegisterButton {
-  align-self: center;
-  width: 60%;
+.linkToRegister {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.loginRegisterButton button {
+  margin: 0 auto;
   height: 30px;
   border-radius: 10px;
   border: none;

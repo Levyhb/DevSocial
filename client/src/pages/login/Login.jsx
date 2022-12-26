@@ -3,6 +3,7 @@ import "./login.css";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const email = useRef();
@@ -12,13 +13,15 @@ export default function Login() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    loginCall(
-      {
-        email: email.current.value,
-        password: password.current.value,
-      },
-      dispatch
-    );
+      console.log(user);
+
+      loginCall(
+        {
+          email: email.current.value,
+          password: password.current.value,
+        },
+        dispatch
+      );
   };
 
   return (
@@ -55,13 +58,15 @@ export default function Login() {
               )}
             </button>
             <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">
-              {isFetching ? (
-                "loading"
-              ) : (
-                "Create a New Account"
-              )}
-            </button>
+            <Link to="/register" className="linkToRegister">
+              <button className="loginRegisterButton">
+                {isFetching ? (
+                  "loading"
+                ) : (
+                  "Create a New Account"
+                )}
+              </button>
+            </Link>
           </form>
         </div>
       </div>
