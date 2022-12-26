@@ -1,6 +1,5 @@
 import axios from "axios";
-import React, { useContext, useRef } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import React, { useRef } from "react";
 import "./register.css";
 import { useNavigate } from 'react-router-dom';
 
@@ -10,8 +9,6 @@ export default function Register() {
   const password = useRef();
   const passwordAgain = useRef();
   const navigate = useNavigate();
-
-  const { user, isFetching, error, dispatch } = useContext(AuthContext);
 
   const handleClick = async (e) => {
     e.preventDefault();
