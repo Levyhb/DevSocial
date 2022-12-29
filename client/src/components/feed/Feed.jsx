@@ -4,19 +4,22 @@ import "./feed.css";
 // import { post } from "../../reactSocialData";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 
 export default function Feed({ username }) {
   const [posts, setPost] = useState([]);
+  const { user } = useContext(AuthContext)
 
   useEffect(() => {
     const fetchPost = async () => {
       const res = username
         ? await axios.get(`/posts/profile/${username}`)
-        : await axios.get("/posts/timeline/63a32233b400011584b611e7");
+        : await axios.get("/posts/timeline/"+ user._id);
       setPost(res.data);
     };
     fetchPost();
-  }, [username]);
+  }, [username, user._id]);
 
   return (
     <div className="feed">
