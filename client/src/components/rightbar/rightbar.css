@@ -81,9 +81,16 @@
 }
 
 .rightbarFollowings {
+  margin-top: 20px;
+}
+
+.rightbarFollowings a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  text-decoration: none;
+  text-align: center;
+  color: black;
 }
 
 .rightbarFollowing {
@@ -91,6 +98,7 @@
   flex-direction: column;
   margin-bottom: 20px;
 }
+
 
 .rightbarFollowingImg {
   width: 100px;

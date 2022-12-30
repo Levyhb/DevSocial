@@ -8,12 +8,10 @@ export default function Login() {
   const email = useRef();
   const password = useRef();
 
-  const { user, isFetching, dispatch } = useContext(AuthContext);
+  const { isFetching, dispatch } = useContext(AuthContext);
 
   const handleClick = (e) => {
     e.preventDefault();
-      console.log(user);
-
       loginCall(
         {
           email: email.current.value,

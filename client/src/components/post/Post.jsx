@@ -42,7 +42,7 @@ export default function Post({ post }) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <Link to={`profile/${user.username}`}>
+            <Link to={"profile/" + user.username}>
               <img
                 className="postProfileImg"
                 src={
@@ -63,7 +63,6 @@ export default function Post({ post }) {
         <div className="postCenter">
           <p className="postText">{post?.desc}</p>
           {post.img && <img className="postImg" src={PF + post.img} alt="post" />}
-          {console.log(post.img)}
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">

@@ -61,10 +61,6 @@ export default function Sidebar() {
           {users.map((u) => (
             <FriendList key={u.id} user={u} />
           ))}
-          {/* <li className="sidebarFriend">
-            <img src="/assets/person/2.jpeg" alt="" className="sidebarFriendImg"/>
-            <span className="sidebarFriendName">John Doe</span>
-          </li> */}
         </ul>
       </div>
     </div>
