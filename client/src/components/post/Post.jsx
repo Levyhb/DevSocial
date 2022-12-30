@@ -3,7 +3,7 @@ import "./post.css";
 import { MoreVert } from "@mui/icons-material";
 import axios from "axios";
 import { format } from "timeago.js";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -11,12 +11,12 @@ export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
-  const {user: currentUser} = useContext(AuthContext);
+  const { user: currentUser } = useContext(AuthContext);
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const likeHandler = () => {
-    try{
+    try {
       axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
     } catch (err) {
       console.log(err);
@@ -27,15 +27,15 @@ export default function Post({ post }) {
 
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
-  }, [currentUser._id, post.likes])
+  }, [currentUser._id, post.likes]);
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${post.userId}`)
+      const res = await axios.get(`/users?userId=${post.userId}`);
       setUser(res.data);
-    }
+    };
     fetchUser();
-  }, [post.userId])
+  }, [post.userId]);
 
   return (
     <div className="post">
@@ -45,7 +45,11 @@ export default function Post({ post }) {
             <Link to={`profile/${user.username}`}>
               <img
                 className="postProfileImg"
-                src={user.profilePicture ? user.profilePicture : PF+"person/noAvatar.png"}
+                src={
+                  user.profilePicture
+                    ? user.profilePicture
+                    : PF + "person/noAvatar.png"
+                }
                 alt=""
               />
             </Link>
@@ -58,9 +62,8 @@ export default function Post({ post }) {
         </div>
         <div className="postCenter">
           <p className="postText">{post?.desc}</p>
-          {
-          post.img && <img className="postImg" src={post.img} alt="post" />
-          }
+          {post.img && <img className="postImg" src={PF + post.img} alt="post" />}
+          {console.log(post.img)}
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
