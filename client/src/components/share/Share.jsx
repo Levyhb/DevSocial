@@ -1,6 +1,12 @@
 import React from "react";
 import "./share.css";
-import { PermMedia, Label, Room, EmojiEmotions } from "@mui/icons-material";
+import {
+  PermMedia,
+  Label,
+  Room,
+  EmojiEmotions,
+  Cancel,
+} from "@mui/icons-material";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useRef } from "react";
@@ -20,13 +26,13 @@ export default function Share() {
       desc: desc.current.value,
     };
 
-    if(file) {
+    if (file) {
       const data = new FormData();
       const fileName = Date.now() + file.name;
       data.append("name", fileName);
       data.append("file", file);
       newPost.img = fileName;
-      try {  
+      try {
         await axios.post("/api/upload", data);
       } catch (err) {
         console.log(err);
@@ -34,7 +40,7 @@ export default function Share() {
     }
 
     try {
-      await axios.post("/posts", newPost)
+      await axios.post("/posts", newPost);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -46,7 +52,11 @@ export default function Share() {
       <div className="shareWrapper">
         <div className="shareTop">
           <img
-            src={ user.profilePicture ? user.profilePicture : PF + "person/noAvatar.png"}
+            src={
+              user.profilePicture
+                ? user.profilePicture
+                : PF + "person/noAvatar.png"
+            }
             alt="person"
             className="shareProfileImg"
           />
@@ -57,6 +67,12 @@ export default function Share() {
           />
         </div>
         <hr className="shareHr" />
+        {file && (
+          <div className="shareImgContainer">
+            <img src={URL.createObjectURL(file)} className="shareImg" alt="share img" />
+            <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
+          </div>
+        )}
         <form className="shareBottom" onSubmit={submitHandler}>
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
