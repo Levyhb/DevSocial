@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import Messenger from "./pages/messenger/Messenger";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -16,7 +17,9 @@ function App() {
         <Route path="/login" element={user ? redirect("/") : <Login />} />
         <Route path="/register" element={user ? redirect("/") : <Register />} />
         <Route path="/profile/:username" element={<Profile />} />
+        <Route path="/messenger" element={!user ? redirect("/") : <Messenger />} />
       </Routes>
+
     </div>
   );
 }
