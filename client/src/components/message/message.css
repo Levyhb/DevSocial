@@ -22,6 +22,7 @@
   background-color: #1877f2;
   color: white;
   max-width: 300px;
+  overflow-wrap: break-word;
 }
 
 .messageBottom {
