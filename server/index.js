@@ -9,6 +9,9 @@ const PORT = 8800;
 const usersRoute = require('./routes/users');
 const authRoute = require('./routes/auth');
 const postsRoute = require('./routes/posts');
+const conversationRoute = require('./routes/conversations');
+const messageRoute = require('./routes/messages');
+
 const multer = require("multer");
 const path = require("path")
 
@@ -48,6 +51,9 @@ app.post("/api/upload", upload.single("file"), (req, res) =>{
 app.use('/users', usersRoute);
 app.use('/auth', authRoute);
 app.use('/posts', postsRoute);
+app.use('/conversations', conversationRoute);
+app.use('/messages', messageRoute);
+
 
 
 
