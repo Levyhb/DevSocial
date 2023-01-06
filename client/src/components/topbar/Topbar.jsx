@@ -1,28 +1,35 @@
-import React, { useContext } from 'react'
-import './topbar.css';
-import { Search, Person, Chat, Notifications } from '@mui/icons-material';
-import { Link } from "react-router-dom"
-import { AuthContext } from '../../context/AuthContext';
+import React, { useContext } from "react";
+import "./topbar.css";
+import { Search, Person, Chat, Notifications } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Topbar() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
-    <div className='topbarContainer'>
+    <div className="topbarContainer">
       <div className="topbarLeft">
         <Link to="/">
-          <span className='logo'>React_Social</span>
+          <span className="logo">React_Social</span>
         </Link>
       </div>
       <div className="topbarCenter">
-        <Search className="searchIcon"/>
-        <input placeholder='Search for friend, post or video' className='searchInput' />
+        <Search className="searchIcon" />
+        <input
+          placeholder="Search for friend, post or video"
+          className="searchInput"
+        />
       </div>
       <div className="topbarRight">
-        <div className='topbarLinks'>
-          <div className="topbarLink">Homepage</div>
-          <div className="topbarLink">Timeline</div>
+        <div className="topbarLinks">
+          <Link to="/" className="topbarLink">
+            <span>Timeline</span>
+          </Link>
+          <Link to={"/messenger"} className="topbarLink">
+            <span>Messenger</span>
+          </Link>
         </div>
 
         <div>
@@ -44,9 +51,17 @@ export default function Topbar() {
           </div>
         </div>
         <Link to={`/profile/${user.username}`}>
-          <img src={user.profilePicture ? user.profilePicture : PF+"person/noAvatar.png"} alt="person" className="topbarImg"/>
+          <img
+            src={
+              user.profilePicture
+                ? user.profilePicture
+                : PF + "person/noAvatar.png"
+            }
+            alt="person"
+            className="topbarImg"
+          />
         </Link>
       </div>
     </div>
-  )
+  );
 }

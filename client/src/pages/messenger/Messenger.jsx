@@ -11,11 +11,11 @@ import axios from "axios";
 import { useRef } from "react";
 
 export default function Messenger() {
+  const { user } = useContext(AuthContext);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [conversations, setConversations] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const { user } = useContext(AuthContext);
   const scrollRef = useRef();
 
   useEffect(() => {
@@ -28,8 +28,8 @@ export default function Messenger() {
       }
     };
     getConversations();
-  }, [user._id]);
-  console.log(conversations);
+  }, [user?._id]);
+
   useEffect(() => {
     const getMessages = async () => {
       try {
@@ -73,7 +73,7 @@ export default function Messenger() {
               placeholder="Search for a friend"
               className="chatMenuInput"
             />
-            {conversations.map((c) => (
+            {conversations && conversations.map((c) => (
               <div onClick={() => setCurrentChat(c)}>
                 <Conversation
                   conversation={c}
@@ -89,7 +89,7 @@ export default function Messenger() {
             {currentChat ? (
               <>
                 <div className="chatBoxTop">
-                  {messages.map((m) => (
+                  {messages && messages.map((m) => (
                     <div ref={scrollRef}>
                       <Message message={m} own={m.sender === user._id} />
                     </div>

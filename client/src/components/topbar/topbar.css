@@ -70,6 +70,15 @@
   cursor: pointer;
 }
 
+.topbarLink {
+  text-decoration: none;
+  color: white;
+}
+
+.topbarLink:hover {
+  text-decoration: underline;
+}
+
 .topbarIcons {
   display: flex;
 }
