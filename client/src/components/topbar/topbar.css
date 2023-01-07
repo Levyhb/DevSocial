@@ -68,15 +68,14 @@
   margin-right: 10px;
   font-size: 14px;
   cursor: pointer;
-}
-
-.topbarLink {
   text-decoration: none;
   color: white;
 }
 
-.topbarLink:hover {
-  text-decoration: underline;
+.topbarLink span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .topbarIcons {
@@ -109,5 +108,13 @@
   width: 40px;
   border-radius: 50%;
   cursor: pointer;
+  object-fit: cover;
+}
+
+.logout svg {
+  color: white;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
 }
