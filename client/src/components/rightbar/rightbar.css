@@ -1,9 +1,9 @@
 .rightbar {
-  flex: 4;
+  flex: 3.5;
 }
 
 .rightbarWrapper {
-  padding: 20px 20px 0 0;
+  padding: 1.25rem 1.25rem 0 0;
 }
 
 .birthdayContainer {
@@ -12,9 +12,9 @@
 }
 
 .birthdayImg {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 0.6rem;
 }
 
 .birthdayText {
@@ -24,12 +24,12 @@
 
 .rightbarAd {
   width: 90%;
-  border-radius: 10px;
-  margin: 30px 0 ;
+  border-radius: 0.6rem;
+  margin: 1.875rem 0 ;
 }
 
 .rightbarTitle {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .rightbarFriendList {
@@ -45,13 +45,13 @@
 }
 
 .rightbarProfileImgContainer {
-  margin-right: 10px;
+  margin-right: 0.6rem;
   position: relative;
 }
 
 .rightbarProfileImg {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -59,15 +59,15 @@
 .rightbarTitle {
   font-size: 18px;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 0.6rem;
 }
 
 .rightInfo {
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .rightbarInfoItem {
-  margin-bottom: 10px;
+  margin-bottom: 0.6rem;
 }
 
 .rightbarInfoKey {
@@ -81,7 +81,7 @@
 }
 
 .rightbarFollowings {
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .rightbarFollowings a {
@@ -96,25 +96,25 @@
 .rightbarFollowing {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 
 .rightbarFollowingImg {
-  width: 100px;
-  height: 100px;
+  width: 6.25rem;
+  height: 6.25rem;
   object-fit: cover;
   border-radius: 5px;
 }
 
 .rightbarFollowButton {
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin-top: 1.875rem;
+  margin-bottom: 0.6rem;
   border: none;
-  background-color: #1872f2;
+  background-color: var(--main-bg-blue);
   color: white;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 0.6rem;
   display: flex;
   align-items: center;
   font-weight: 500;

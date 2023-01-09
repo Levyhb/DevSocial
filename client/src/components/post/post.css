@@ -1,13 +1,13 @@
 .post {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 0.6rem;
   -webkit-box-shadow: 0px 0px 16px -7px rgba(0,0,0,0.68); 
   box-shadow: 0px 0px 16px -7px rgba(0,0,0,0.68);
   margin-bottom: 30px ;
 }
 
 .postWrapper {
-  padding: 10px;
+  padding: 0.6rem;
 }
 
 .postTop {
@@ -22,8 +22,8 @@
 }
 
 .postProfileImg {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -31,7 +31,7 @@
 .postUsername {
   font-size: 15px;
   font-weight: 500;
-  margin: 0 10px;
+  margin: 0 0.6rem;
 }
 
 .postDate {
@@ -39,14 +39,14 @@
 }
 
 .postCenter {
-  margin: 20px 0;
+  margin: 1.25rem 0;
 }
 
 .postImg {
-  margin-top: 20px;
+  margin-top: 1.25rem;
   width: 100%;
   max-height: 500px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .postBottom {
@@ -61,8 +61,8 @@
 }
 
 .likeIcon {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   margin-right: 5px;
   cursor: pointer;
   scale: 0.9;

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./topbar.css";
 import { Search, Person, Chat, Notifications } from "@mui/icons-material";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import FeedIcon from '@mui/icons-material/Feed';

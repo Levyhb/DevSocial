@@ -1,7 +1,7 @@
 .message {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .messageTop {
@@ -9,25 +9,25 @@
 }
 
 .messageImg {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 0.6rem;
   object-fit: cover;
 }
 
 .messageText {
-  padding: 10px;
-  border-radius: 20px;
-  background-color: #1877f2;
+  padding: 0.6rem;
+  border-radius: 1.25rem;
+  background-color: var(--main-bg-blue);
   color: white;
   max-width: 300px;
   overflow-wrap: break-word;
 }
 
 .messageBottom {
-  font-size: 12px;
-  margin-top: 10px;
+  font-size: 0.75rem;
+  margin-top: 0.6rem;
 }
 
 .message.own {
