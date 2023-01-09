@@ -1,3 +1,9 @@
+.rightbarOnlineWrapper {
+  height: 12.5rem;
+  padding: 0.6rem;
+  overflow-y: scroll;
+}
+
 .rightbarOnline {
   width: 12px;
   height: 12px;
@@ -11,4 +17,14 @@
 
 .rightbarUsername {
   font-weight: 500;
+}
+
+.rightbarFriendList a {
+  text-decoration: none;
+  color: black;
+}
+
+.noFriendsOnline {
+  color: rgba(95, 95, 95, 0.712);
+  text-align: center;
 }

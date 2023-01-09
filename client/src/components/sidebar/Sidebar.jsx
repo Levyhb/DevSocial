@@ -57,11 +57,12 @@ export default function Sidebar() {
         </ul>
         <button className="sidebarButton">Show More</button>
         <hr className="sidebarHr" />
-        <ul className="sidebarFriendList">
+        {/* to do: following user recommendation */}
+        {/* <ul className="sidebarFriendList">
           {users.map((u) => (
             <FriendList key={u.id} user={u} />
           ))}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );
