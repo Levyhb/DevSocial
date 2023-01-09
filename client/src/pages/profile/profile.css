@@ -49,3 +49,132 @@
 .profileRightBottom {
   display: flex;
 }
+
+.editProfile {
+  display: flex;
+  justify-content: center;
+  padding: 0.6rem;
+}
+
+.editProfile button {
+  background-color: var(--main-bg-blue);
+  color: white;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.editProfile button:hover {
+  background-color: var(--main-bg-blue-hover);
+  box-shadow: 0 0 3px rgba(29, 29, 29, 0.541);
+}
+
+.modalOverlay {
+  background-color: rgba(3, 3, 3, 0.719);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 450px;
+  max-height: 85vh;
+  padding: 25px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profileEditTitle {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.profileEditPicture {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profilePictureFile {
+  padding: 5px;
+  border-radius: 5px;
+  color: var(--main-bg-blue);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.profilePictureFile:hover {
+  background-color: rgba(241, 241, 241, 0.911);
+  transition: 0.2s all;
+}
+
+.editProfilePicturePreview {
+  display: flex;
+  justify-content: center;
+  margin: 0.6rem 0 1rem 0;
+}
+
+.editProfilePicturePreview img {
+  display: flex;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileEditInfo {
+  display: flex;
+  margin: 0.4rem 0;
+  padding: 0 2rem;
+  justify-content: space-between;
+}
+
+.profileEditInfo input,textarea {
+  padding: 0.2rem;
+  border: 1px solid gray;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.377);
+  border-radius: 5px;
+  width: 12.5rem;
+}
+
+.profileEditInfo input:focus {
+  outline: none;
+}
+
+.profileEditSaveBtn {
+  margin: 0.6rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.profileEditSaveBtn button {
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0.5rem;
+  background-color: var(--success-bg-green);
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+
+.profileEditSaveBtn button:hover {
+  background-color: #159e15;
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

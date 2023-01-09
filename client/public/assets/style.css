@@ -1,5 +1,7 @@
 :root {
   --main-bg-blue: #1877f2;
+  --main-bg-blue-hover: #0c6ceb;
+  --success-bg-green: #18ad18;
 }
 
 * {

@@ -1,0 +1,26 @@
+.editProfile {
+  display: flex;
+  justify-content: center;
+  padding: 0.6rem;
+}
+
+.editProfile button {
+  background-color: var(--main-bg-blue);
+  color: white;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.editProfile button:hover {
+  background-color: var(--main-bg-blue-hover);
+  box-shadow: 0 0 3px rgba(29, 29, 29, 0.541);
+}
+
+.editProfileForm {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+}
