@@ -118,12 +118,12 @@ export default function Rightbar({ user }) {
         <h4 className="rightbarTitle">User Friends</h4>
         <div className="rightbarFollowings">
           {friends.map((friend) => (
-            <Link to={"/profile/" + friend.username}>
+            <Link to={"/profile/" + friend.username} key={friend._id}>
               <div className="rightbarFollowing">
                 <img
                   src={
                     friend.profilePicture
-                      ? friend.profilePicture
+                      ? PF+friend.profilePicture
                       : PF + "person/noAvatar.png"
                   }
                   alt=""

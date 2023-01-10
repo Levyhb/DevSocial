@@ -170,6 +170,11 @@
   background-color: #159e15;
 }
 
+.profileEditSaveBtn button:disabled {
+  cursor: not-allowed;
+  background-color: #494949;
+}
+
 @keyframes overlayShow {
   from {
     opacity: 0;

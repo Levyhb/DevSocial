@@ -54,7 +54,7 @@ export default function Share() {
           <img
             src={
               user.profilePicture
-                ? user.profilePicture
+                ? PF+user.profilePicture
                 : PF + "person/noAvatar.png"
             }
             alt="person"
@@ -67,7 +67,7 @@ export default function Share() {
           />
         </div>
         <hr className="shareHr" />
-        {file && (
+        { file && (
           <div className="shareImgContainer">
             <img src={URL.createObjectURL(file)} className="shareImg" alt="share img" />
             <Cancel className="shareCancelImg" onClick={() => setFile(null)} />

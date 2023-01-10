@@ -47,7 +47,7 @@ export default function Post({ post }) {
                 className="postProfileImg"
                 src={
                   user.profilePicture
-                    ? user.profilePicture
+                    ? PF+user.profilePicture
                     : PF + "person/noAvatar.png"
                 }
                 alt=""
