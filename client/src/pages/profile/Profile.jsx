@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -13,14 +13,19 @@ export default function Profile() {
   const { user: currentUser } = useContext(AuthContext);
 
   const [file, setFile] = useState(null);
-  const [desc, setDesc] = useState(currentUser.desc);
-  const [name, setUsername] = useState(currentUser.userName);
-  const [city, setCity] = useState(currentUser.city);
-  const [from, setFrom] = useState();
+  const [desc, setDesc] = useState(null);
+  const [name, setUsername] = useState(null);
+  const [city, setCity] = useState(null);
+  const [from, setFrom] = useState(null);
   const [user, setUser] = useState({});
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { username } = useParams();
+
+  const disabledBtn = (desc, name, city, from, file) => {
+    const verify = (!desc && !name && !city && !from && !file);
+    return verify;
+  }
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -173,6 +178,7 @@ export default function Profile() {
                           className="profileEditSaveBtn"
                           type="submit"
                           onClick={updateUser}
+                          disabled={disabledBtn(desc, name, city, from, file)}
                         >
                           save changes
                         </button>
