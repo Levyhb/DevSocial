@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./topbar.css";
-import { Search, Person, Chat, Notifications } from "@mui/icons-material";
+import { Search } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
@@ -39,25 +39,6 @@ export default function Topbar() {
             <span>Messenger < QuestionAnswerIcon /></span>
           </Link>
         </div>
-
-        {/* <div>
-          <div className="topbarIcons">
-            <div className="topbarIconItem">
-              <Person />
-              <div className="topbarIconItemBadge">1</div>
-            </div>
-
-            <div className="topbarIconItem">
-              <Chat />
-              <div className="topbarIconItemBadge">3</div>
-            </div>
-
-            <div className="topbarIconItem">
-              <Notifications />
-              <div className="topbarIconItemBadge">1</div>
-            </div>
-          </div>
-        </div> */}
         <Link to={`/profile/${user.username}`}>
           <img
             src={

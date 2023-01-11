@@ -5,7 +5,7 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import "./profile.css";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ProfileEdit from "../../components/profileEdit/ProfileEdit";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AuthContext } from "../../context/AuthContext";
