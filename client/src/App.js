@@ -18,7 +18,6 @@ function App() {
         <Route path="/profile/:username" element={user ? <Profile /> : <Navigate replace to="/   " />} />
         <Route path="/messenger" element={!user ? <Navigate replace to="/" /> : <Messenger />} />
       </Routes>
-
     </div>
   );
 }

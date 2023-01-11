@@ -6,7 +6,6 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import "./profile.css";
 import { useParams } from "react-router-dom";
-import ProfileEdit from "../../components/profileEdit/ProfileEdit";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -56,8 +55,8 @@ export default function Profile() {
 
     try {
       await axios.put(`/users/${currentUser._id}`, user);
-      localStorage.removeItem("user")
-      window.location.reload()
+      localStorage.removeItem("user");
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -78,7 +77,11 @@ export default function Profile() {
               />
               <img
                 className="profileUserImg"
-                src={user.profilePicture ? PF+user.profilePicture : `${PF}person/noAvatar.png`}
+                src={
+                  user.profilePicture
+                    ? PF + user.profilePicture
+                    : `${PF}person/noAvatar.png`
+                }
                 alt=""
               />
             </div>
@@ -88,7 +91,9 @@ export default function Profile() {
             </div>
             {currentUser && currentUser._id === user._id && (
               <Dialog.Root>
-                <ProfileEdit />
+                <div className="editProfile">
+                  <Dialog.Trigger>Edit Profile</Dialog.Trigger>
+                </div>
 
                 <Dialog.Portal>
                   <Dialog.Overlay className="modalOverlay" />
@@ -100,7 +105,10 @@ export default function Profile() {
                     <form onSubmit={updateUser}>
                       <div className="profileEditPicture">
                         <h3 className="editProfileItem">Profile Picture</h3>
-                        <label htmlFor="profileImg" className="profilePictureFile">
+                        <label
+                          htmlFor="profileImg"
+                          className="profilePictureFile"
+                        >
                           <span>Change profile picture</span>
                           <input
                             style={{ display: "none" }}
@@ -112,19 +120,22 @@ export default function Profile() {
                         </label>
                       </div>
                       <div className="editProfilePicturePreview">
-                        { file ? (
-                          <img src={URL.createObjectURL(file)} className="shareImg" alt="share img" />
+                        {file ? (
+                          <img
+                            src={URL.createObjectURL(file)}
+                            className="shareImg"
+                            alt="share img"
+                          />
                         ) : (
                           <img
-                          src={
-                            user.profilePicture
-                              ? PF+user.profilePicture
-                              : PF + "person/noAvatar.png"
-                          }
-                          alt=""
-                        />
-                        )
-                        }
+                            src={
+                              user.profilePicture
+                                ? PF + user.profilePicture
+                                : PF + "person/noAvatar.png"
+                            }
+                            alt=""
+                          />
+                        )}
                       </div>
                       <div className="profileEditInfo">
                         <h3>Username:</h3>
