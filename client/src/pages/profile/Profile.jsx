@@ -13,19 +13,14 @@ export default function Profile() {
   const { user: currentUser } = useContext(AuthContext);
 
   const [file, setFile] = useState(null);
-  const [desc, setDesc] = useState(null);
-  const [name, setUsername] = useState(null);
-  const [city, setCity] = useState(null);
-  const [from, setFrom] = useState(null);
+  const [desc, setDesc] = useState(currentUser?.desc);
+  const [name, setUsername] = useState(currentUser?.name);
+  const [city, setCity] = useState(currentUser?.city);
+  const [from, setFrom] = useState(currentUser?.from);
   const [user, setUser] = useState({});
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { username } = useParams();
-
-  const disabledBtn = (desc, name, city, from, file) => {
-    const verify = (!desc && !name && !city && !from && !file);
-    return verify;
-  }
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -178,7 +173,6 @@ export default function Profile() {
                           className="profileEditSaveBtn"
                           type="submit"
                           onClick={updateUser}
-                          disabled={disabledBtn(desc, name, city, from, file)}
                         >
                           save changes
                         </button>
