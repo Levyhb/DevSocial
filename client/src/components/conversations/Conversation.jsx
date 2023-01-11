@@ -20,7 +20,7 @@ export default function Conversation({ conversation, currentUser }) {
   return (
     <div className="conversation">
       <img
-        src={user && user.profilePicture ? user.profilePicture : PF+"/person/noAvatar.png" }
+        src={user && user.profilePicture ? PF+user.profilePicture : PF+"/person/noAvatar.png" }
         alt="profile img"
         className="conversationImg"
       />

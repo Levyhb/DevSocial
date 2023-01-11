@@ -47,6 +47,11 @@
   color: white;
 }
 
+.chatSubmitButton:disabled {
+  cursor: not-allowed;
+  background-color: #494949;
+}
+
 .chatOnline {
   flex: 3;
 }

@@ -102,6 +102,11 @@ export default function Messenger() {
     }
   };
 
+  const disabledBtn = (text) => {
+    if(!text) return true
+    return false;
+  }
+
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -152,6 +157,7 @@ export default function Messenger() {
                     type="submit"
                     onClick={handleSubmit}
                     className="chatSubmitButton"
+                    disabled={disabledBtn(newMessage)}
                   >
                     Send
                   </button>
