@@ -1,20 +1,14 @@
-import { Route, Routes, redirect, useLocation, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/register";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Messenger from "./pages/messenger/Messenger";
 
 function App() {
   const { user } = useContext(AuthContext);
-  const location = useLocation();
-
-  useEffect(() => {
-    if(!user) redirect("/login")
-  }, [location])
-
   return (
     <div>
       <Routes>
