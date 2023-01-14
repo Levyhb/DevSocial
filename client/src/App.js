@@ -14,11 +14,26 @@ function App() {
     <div>
       <Routes>
         <Route exact path="/" element={user ? <Home /> : <Login />} />
-        <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />
-        <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register />} />
-        <Route path="/profile/:username" element={user ? <Profile /> : <Navigate replace to="/   " />} />
-        <Route path="/messenger" element={!user ? <Navigate replace to="/" /> : <Messenger />} />
-        <Route path="/search" element={!user ? <Navigate replace to="/" /> : <Search />} />
+        <Route
+          path="/login"
+          element={user ? <Navigate replace to="/" /> : <Login />}
+        />
+        <Route
+          path="/register"
+          element={user ? <Navigate replace to="/" /> : <Register />}
+        />
+        <Route
+          path="/profile/:username"
+          element={user ? <Profile /> : <Navigate replace to="/   " />}
+        />
+        <Route
+          path="/messenger"
+          element={!user ? <Navigate replace to="/" /> : <Messenger />}
+        />
+        <Route
+          path="/search"
+          element={!user ? <Navigate replace to="/" /> : <Search />}
+        />
       </Routes>
     </div>
   );
