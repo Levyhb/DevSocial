@@ -111,19 +111,6 @@ router.get("/:username", async (req, res) => {
   }
 });
 
-// Get a user by id
-router.get("/:userId", async (req, res) => {
-  const { userId } = req.params;
-  try {
-    const user = await User.findById(userId);
-    const { password, updatedAt, ...userInfo } = user._doc;
-    res.status(200).json(userInfo);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(err);
-  }
-});
-
 //Follow a User
 router.put("/:id/follow", async (req, res) => {
   const { id } = req.params;
