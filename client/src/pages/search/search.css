@@ -1,0 +1,38 @@
+.searchContainer {
+  display: flex;
+  width: 100%;
+}
+
+.searchWrapper {
+  flex: 5.5
+}
+
+.usersInfo {
+  margin-top: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.usersInfo:hover {
+  cursor: pointer;
+  background-color: rgb(245, 245, 245);
+}
+
+.usersInfo span {
+  font-weight: bold;
+}
+
+.usersInfo img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.noFoundUser {
+  margin-top: 50%;
+  color: rgba(95, 95, 95, 0.712);
+  text-align: center;
+}

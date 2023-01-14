@@ -1,8 +1,5 @@
 import React from "react";
 import "./sidebar.css";
-import { users } from "../../reactSocialData";
-import FriendList from "../friendList/FriendList";
-
 import { RssFeed } from "@mui/icons-material";
 import ChatIcon from "@mui/icons-material/Chat";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";

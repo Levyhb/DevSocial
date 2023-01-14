@@ -6,6 +6,7 @@ import Profile from "./pages/profile/Profile";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Messenger from "./pages/messenger/Messenger";
+import Search from "./pages/search/Search";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -17,6 +18,7 @@ function App() {
         <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register />} />
         <Route path="/profile/:username" element={user ? <Profile /> : <Navigate replace to="/   " />} />
         <Route path="/messenger" element={!user ? <Navigate replace to="/" /> : <Messenger />} />
+        <Route path="/search" element={!user ? <Navigate replace to="/" /> : <Search />} />
       </Routes>
     </div>
   );

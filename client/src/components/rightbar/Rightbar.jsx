@@ -141,7 +141,7 @@ export default function Rightbar({ user }) {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {window.location.pathname === "/" ? (
+        {window.location.pathname === "/" || window.location.pathname === "/search"? (
           <HomeRightBar />
         ) : (
           <ProfileRightBar />
