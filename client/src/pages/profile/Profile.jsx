@@ -174,7 +174,7 @@ export default function Profile() {
                           type="submit"
                           onClick={updateUser}
                         >
-                          save changes
+                          save changes and logout
                         </button>
                       </div>
                     </form>
