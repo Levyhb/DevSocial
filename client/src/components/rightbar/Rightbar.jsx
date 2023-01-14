@@ -34,8 +34,8 @@ export default function Rightbar({ user }) {
   }, [user]);
   
   useEffect(() => {
-    setFollowed(currentUser.followings.includes(user?.id));
-  }, [currentUser, user.id]);
+    setFollowed(currentUser.followings.includes(user?._id));
+  }, [currentUser, user._id]);
 
   const handleClick = async () => {
     try {
@@ -49,12 +49,12 @@ export default function Rightbar({ user }) {
           userId: currentUser._id,
         });
         dispatch({type: "FOLLOW", payload: user._id})
-
+        
       }
+      setFollowed(!followed);
     } catch (err) {
       console.log(err);
     }
-    setFollowed(!followed);
   };
 
   
