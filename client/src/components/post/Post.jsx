@@ -42,8 +42,6 @@ export default function Post({ post }) {
     const userId = currentUser._id
     try {
       const id = post._id;
-      console.log(post?.userId)
-      console.log(userId);
       await axios.delete(`/posts/${id}`, userId)
       window.location.reload();
     } catch (error) {
