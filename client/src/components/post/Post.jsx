@@ -11,6 +11,7 @@ export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
+  const [infoPost, setInfoPost] = useState(false);
   const { user: currentUser } = useContext(AuthContext);
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -37,6 +38,19 @@ export default function Post({ post }) {
     fetchUser();
   }, [post.userId]);
 
+  const deletePost = async () => {
+    const userId = currentUser._id
+    try {
+      const id = post._id;
+      console.log(post?.userId)
+      console.log(userId);
+      await axios.delete(`/posts/${id}`, userId)
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="post">
       <div className="postWrapper">
@@ -56,8 +70,13 @@ export default function Post({ post }) {
             <span className="postUsername">{user.username}</span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
-          <div className="postTopRight">
-            <MoreVert />
+          <div className="postTopRight" >
+            {post?.userId === currentUser?._id && (
+              <MoreVert onClick={() => {setInfoPost(!infoPost)}}/>
+            )}
+            {infoPost && (
+              <div className="deletePostWrapper" onClick={deletePost}>Delete Post</div>
+            )}
           </div>
         </div>
         <div className="postCenter">
