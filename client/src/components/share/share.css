@@ -78,11 +78,16 @@
 .shareImgContainer {
   padding: 0 1.25rem 0.6rem 1.25rem;
   position: relative;
+  margin: auto;
+  max-height: 400px;
+  max-width: 400px;
 }
 
 .shareImg {
   width: 100%;
   object-fit: cover;
+  max-height: 400px;
+  max-width: 400px;
 }
 
 .shareCancelImg {
