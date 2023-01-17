@@ -25,7 +25,7 @@ export default function Rightbar({ user }) {
 
   
   useEffect(() => {
-    socket.current.emit("addUser", user._id);
+    socket.current.emit("addUser", user?._id);
     socket.current.on("getUsers", (users) => {
       setOnlineUsers(
         user.followings.filter((f) => users.some((u) => u.userId === f))

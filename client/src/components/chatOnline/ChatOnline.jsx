@@ -38,7 +38,7 @@ export default function ChatOnline({onlineUsers, currentId, setCurrentChat }) {
         <div className="chatOnlineImgContainer">
           <img
             className="chatOnlineImg"
-            src={o.profilePicture ? o.profilePicture : PF+"person/noAvatar.png" }
+            src={o.profilePicture ? PF+o.profilePicture : PF+"person/noAvatar.png" }
             alt=""
           />
           <div className="chatOnlineBadge"></div>
