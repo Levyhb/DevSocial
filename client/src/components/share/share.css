@@ -75,6 +75,11 @@
   color: white;
 }
 
+.shareButton:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
 .shareImgContainer {
   padding: 0 1.25rem 0.6rem 1.25rem;
   position: relative;

@@ -16,7 +16,8 @@ import axios from "axios";
 export default function Share() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const desc = useRef();
+  const [desc, setDesc] = useState('');
+  // const desc = useRef();
   const [file, setFile] = useState(null);
 
   const submitHandler = async (e) => {
@@ -47,8 +48,11 @@ export default function Share() {
     }
   };
 
+  const verify = !file && !desc ;
+
   return (
     <div className="share">
+      {console.log(desc)}
       <div className="shareWrapper">
         <div className="shareTop">
           <img
@@ -63,7 +67,7 @@ export default function Share() {
           <input
             placeholder={`What´s in your mind ${user.username}?`}
             className="shareInput"
-            ref={desc}
+            onChange={(d) => setDesc(d.target.value)}
           />
         </div>
         <hr className="shareHr" />
@@ -100,7 +104,7 @@ export default function Share() {
               <span className="shareOptionText">Feelings</span>
             </div>
           </div>
-          <button className="shareButton" type="submit">
+          <button className="shareButton" type="submit" disabled={ verify}>
             Share
           </button>
         </form>
