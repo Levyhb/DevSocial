@@ -9,7 +9,6 @@ import {
 } from "@mui/icons-material";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { useRef } from "react";
 import { useState } from "react";
 import axios from "axios";
 
@@ -17,7 +16,6 @@ export default function Share() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [desc, setDesc] = useState('');
-  // const desc = useRef();
   const [file, setFile] = useState(null);
 
   const submitHandler = async (e) => {
@@ -104,7 +102,7 @@ export default function Share() {
               <span className="shareOptionText">Feelings</span>
             </div>
           </div>
-          <button className="shareButton" type="submit" disabled={ verify}>
+          <button className="shareButton" type="submit" disabled={ verify }>
             Share
           </button>
         </form>

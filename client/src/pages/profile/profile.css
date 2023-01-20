@@ -17,6 +17,70 @@
   object-fit: cover;
 }
 
+.coverBackground {
+  position: relative;
+}
+
+.editIcon {
+  position: absolute;
+  right: 1%;
+  top: 5%;
+  cursor: pointer;
+}
+
+.editIcon svg {
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 4px black;
+  padding: 5px;
+}
+
+.editIcon svg:hover {
+  background-color: rgb(247, 247, 247);
+}
+
+.confirmButton {
+  background-color: rgba(0, 0, 0, 0.103);
+  border-radius: 10px;
+  padding: 0.5rem;
+  position: absolute;
+  top: 2%;
+  left: 35%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.confirmButton span {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.confirmButton button {
+  border-radius: 50%;
+  padding: 0.1rem 0.2rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.confirm {
+  background-color: var(--success-bg-green);
+}
+
+.confirm:hover {
+  background-color: var(--success-bg-green-dark);
+}
+
+.cancel {
+  background-color: red;
+}
+
+.cancel:hover {
+  background-color: rgb(216, 1, 1);
+}
+
 .profileUserImg {
   width: 150px;
   height: 150px;
@@ -50,7 +114,6 @@
   display: flex;
 }
 
-
 .editProfile {
   display: flex;
   justify-content: center;
@@ -82,7 +145,8 @@
 .modalContent {
   background-color: white;
   border-radius: 6px;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -139,7 +203,8 @@
   justify-content: space-between;
 }
 
-.profileEditInfo input,textarea {
+.profileEditInfo input,
+textarea {
   padding: 0.2rem;
   border: 1px solid gray;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.377);
@@ -168,7 +233,7 @@
 }
 
 .profileEditSaveBtn button:hover {
-  background-color: #159e15;
+  background-color: var(--success-bg-green-dark);
 }
 
 .profileEditSaveBtn button:disabled {

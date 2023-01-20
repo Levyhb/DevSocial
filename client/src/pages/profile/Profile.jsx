@@ -8,11 +8,15 @@ import "./profile.css";
 import { useParams } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AuthContext } from "../../context/AuthContext";
+import EditIcon from '@mui/icons-material/Edit';
+import CheckIcon from '@mui/icons-material/Check';
+import ClearIcon from '@mui/icons-material/Clear';
 
 export default function Profile() {
   const { user: currentUser } = useContext(AuthContext);
 
   const [file, setFile] = useState(null);
+  const [coverBackground, setCoverBackground] = useState(null)
   const [desc, setDesc] = useState(currentUser?.desc);
   const [name, setUsername] = useState(currentUser?.name);
   const [city, setCity] = useState(currentUser?.city);
@@ -62,6 +66,35 @@ export default function Profile() {
     }
   };
 
+
+  const updateBackground = async (e) => {
+    e.preventDefault();
+    const user = {
+      userId: currentUser._id,
+    }
+
+    if(coverBackground) {
+      const data = new FormData();
+      const fileName = Date.now() + coverBackground.name;
+      data.append("name", fileName);
+      data.append("file", coverBackground);
+      user.colorPicture = fileName;
+      try {
+        await axios.post("/api/upload", data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    try {
+      await axios.put(`/users/${currentUser._id}`, user)
+      localStorage.removeItem("user");
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <>
       <Topbar />
@@ -70,11 +103,46 @@ export default function Profile() {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileCover">
-              <img
-                className="profileCoverImg"
-                src={user.colorPicture || `${PF}person/noCover.jpg`}
-                alt=""
-              />
+              <div className="coverBackground">
+                { coverBackground ? (
+                  <img
+                  src={URL.createObjectURL(coverBackground)}
+                  className="profileCoverImg"
+                  alt="share img"
+                /> 
+                ) : (
+                  <img
+                    className="profileCoverImg"
+                    src={user.colorPicture ? PF+user.colorPicture : `${PF}person/noCover.jpg`}
+                    alt=""
+                  />
+                )}
+                <EditIcon className="editIcon"/>
+                <label
+                  htmlFor="profileImg"
+                  className="editIcon"
+                >
+                  <EditIcon className="editIcon"/>
+                  <input
+                    style={{ display: "none" }}
+                    type="file"
+                    id="profileImg"
+                    accept=".png, .jpeg, .jpg"
+                    onChange={(e) => setCoverBackground(e.target.files[0])}
+                  />
+                </label>
+                { coverBackground && (
+                  <div className="confirmButton">
+                    <span>Confirm the new background? </span>
+                    <button className="confirm" onClick={updateBackground}>
+                      <CheckIcon/>
+                    </button> 
+                    <button className="cancel" onClick={() => setCoverBackground(null)}>
+                      <ClearIcon/>
+                    </button> 
+                  </div>
+                )}
+              </div>
               <img
                 className="profileUserImg"
                 src={
