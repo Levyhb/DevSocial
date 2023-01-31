@@ -122,7 +122,11 @@ export default function Post({ post }) {
                 </div>
               </div>
               <div className="writeCommentBox">
-                <img src={PF+"/person/2.jpeg"} alt="" className="commentUserProfilePicture"/>
+                <img src={
+                  currentUser.profilePicture
+                    ? PF+currentUser.profilePicture
+                    : PF + "person/noAvatar.png"
+                } alt="" className="commentUserProfilePicture"/>
                 <input type="text" className="writeComment" placeholder="Write a reply"/>
                 <button className="sendComment">send</button>
               </div>

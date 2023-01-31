@@ -154,6 +154,7 @@
   width: 80%;
   padding-left: 1rem;
   border-radius: 5px;
+  border: 1px solid black;
 }
 
 .sendComment {
