@@ -103,4 +103,20 @@ router.get("/profile/:username", async (req, res) => {
   }
 });
 
+// Comment a post 
+
+router.put("/:id/comments", async (req, res) => {
+  try {
+    const { userId, comment } = req.body;
+    const newComment = { userId, comment };
+    const post = await Post.findById(req.params.id);
+    await post.updateOne({ $push: { comments: newComment } });
+    res.status(200).json("The post has been commented");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 module.exports = router;
