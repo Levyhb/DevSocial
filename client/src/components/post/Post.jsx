@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./post.css";
-import { MoreVert } from "@mui/icons-material";
+import { MoreVert, Comment } from "@mui/icons-material";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
@@ -12,6 +12,7 @@ export default function Post({ post }) {
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const [infoPost, setInfoPost] = useState(false);
+  const [comments, setComments] = useState(false);
   const { user: currentUser } = useContext(AuthContext);
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -97,8 +98,36 @@ export default function Post({ post }) {
             />
             <span className="postLikeCounter">{like} people like it</span>
           </div>
-          <div className="postBottomRight"></div>
+          <div className="postBottomRight" onClick={() => setComments(!comments)}>
+            Comment <Comment />
+            </div>
         </div>
+          {comments && (
+            <div>
+              <div className="commentsWrapper">
+                <div className="userComments">
+                  <img src={PF+"/person/1.jpeg"} alt="" className="commentUserProfilePicture"/>
+                  <div className="commentBox">
+                    <span className="commentUsername">Ada Lovelace</span>
+                    <span className="commentText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt deserunt odio quisquam. Fugit rem asperiores officia consectetur? Voluptatem debitis pariatur alias minus vel ullam, praesentium, libero consequatur eligendi suscipit fugit.</span>
+                  </div>
+                </div>
+  
+                <div className="userComments">
+                  <img src={PF+"/person/1.jpeg"} alt="" className="commentUserProfilePicture"/>
+                  <div className="commentBox">
+                    <span className="commentUsername">Ada Lovelace</span>
+                    <span className="commentText">Nice Post!</span>
+                  </div>
+                </div>
+              </div>
+              <div className="writeCommentBox">
+                <img src={PF+"/person/2.jpeg"} alt="" className="commentUserProfilePicture"/>
+                <input type="text" className="writeComment" placeholder="Write a reply"/>
+                <button className="sendComment">send</button>
+              </div>
+            </div>
+          )}
       </div>
     </div>
   );

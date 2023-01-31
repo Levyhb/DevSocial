@@ -84,6 +84,13 @@
   border-bottom: 1px dashed gray;
 }
 
+.postBottomRight {
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  font-weight: 500;
+}
+
 .deletePostWrapper {
   cursor: pointer;
   position: absolute;
@@ -93,3 +100,72 @@
   background-color: rgb(51, 51, 51);
   padding: 0.5rem 1rem;
 }
+
+.commentsWrapper {
+  padding: 0.8rem;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+.userComments {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 1rem 0;
+}
+
+.commentUserProfilePicture {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  align-self: flex-start;
+}
+
+.commentBox {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.commentUsername {
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.commentText {
+  border-radius: 0 10px 10px  10px ;
+  padding: 1rem;
+  background-color: white;
+}
+
+.writeCommentBox {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.writeComment {
+  width: 80%;
+  padding-left: 1rem;
+  border-radius: 5px;
+}
+
+.sendComment {
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: var(--success-bg-green-light);
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.sendComment:hover {
+  background-color: var(--success-bg-green-dark);
+}
+
