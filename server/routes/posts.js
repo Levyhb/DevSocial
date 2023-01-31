@@ -118,5 +118,17 @@ router.put("/:id/comments", async (req, res) => {
   }
 });
 
+// Get all comments of the post
+
+router.get("/:id/comments", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    const comments = post.comments;
+    res.status(200).json(comments);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
