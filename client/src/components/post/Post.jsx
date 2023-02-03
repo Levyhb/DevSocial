@@ -6,15 +6,18 @@ import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import Comments from "../comments/Comments";
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const [infoPost, setInfoPost] = useState(false);
-  const [comments, setComments] = useState(false);
-  const { user: currentUser } = useContext(AuthContext);
+  const [isComment, setIsComment] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [userComments, setUserComments] = useState([]);
 
+  const { user: currentUser } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const likeHandler = () => {
@@ -39,6 +42,21 @@ export default function Post({ post }) {
     fetchUser();
   }, [post.userId]);
 
+  useEffect(() => {
+    const fetchComments = async () => {
+      const res = await axios.get(`/posts/${post._id}/comments`)
+      setComments(res.data);
+      const usersPromises = res.data.map(async (u) => {
+        const userResponse = await axios.get(`/users?userId=${u.userId}`)
+        return userResponse.data
+      })
+      const users = await Promise.all(usersPromises);
+      setUserComments(users);
+    };
+    fetchComments();
+  }, [post._id, post.userId])
+
+
   const deletePost = async () => {
     const userId = currentUser._id
     try {
@@ -52,6 +70,7 @@ export default function Post({ post }) {
 
   return (
     <div className="post">
+
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
@@ -98,28 +117,24 @@ export default function Post({ post }) {
             />
             <span className="postLikeCounter">{like} people like it</span>
           </div>
-          <div className="postBottomRight" onClick={() => setComments(!comments)}>
+          <div className="postBottomRight" onClick={() => setIsComment(!isComment)}>
             Comment <Comment />
             </div>
         </div>
-          {comments && (
+          {isComment && (
             <div>
               <div className="commentsWrapper">
-                <div className="userComments">
-                  <img src={PF+"/person/1.jpeg"} alt="" className="commentUserProfilePicture"/>
-                  <div className="commentBox">
-                    <span className="commentUsername">Ada Lovelace</span>
-                    <span className="commentText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt deserunt odio quisquam. Fugit rem asperiores officia consectetur? Voluptatem debitis pariatur alias minus vel ullam, praesentium, libero consequatur eligendi suscipit fugit.</span>
+                { comments.length === 0 && userComments.length === 0 ? (
+                  <div className="noCommentariesText">
+                    <h3>Be the first to comment!</h3>
                   </div>
-                </div>
-  
-                <div className="userComments">
-                  <img src={PF+"/person/1.jpeg"} alt="" className="commentUserProfilePicture"/>
-                  <div className="commentBox">
-                    <span className="commentUsername">Ada Lovelace</span>
-                    <span className="commentText">Nice Post!</span>
-                  </div>
-                </div>
+                ) : comments.map((e) => {
+                  const findUser = userComments.find((user) => user._id === e.userId )
+                  return (
+                      <Comments comment={e.comment} userToComment={findUser}/>
+                    )
+                  })}
+
               </div>
               <div className="writeCommentBox">
                 <img src={

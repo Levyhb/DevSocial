@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const helmet = require('helmet');
-const PORT = 8800;
+const PORT = process.env.PORT || 8800;
 
 const usersRoute = require('./routes/users');
 const authRoute = require('./routes/auth');
