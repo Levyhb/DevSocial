@@ -30,7 +30,11 @@ https://user-images.githubusercontent.com/94788307/212980891-37fceeb9-ee2b-40bf-
 ## Como rodar localmente
 
 ### instalar dependências
-    npm install
+Em  terminais distintos é preciso entrar nas seguintes pastas e instalar as dependências:
+
+    cd client && npm install
+    cd server && npm install
+    cd socket && npm install
 
 ### rodando o projeto
 Em  terminais distintos é preciso entrar nas seguintes pastas e rodar o projeto:
