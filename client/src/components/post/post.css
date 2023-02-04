@@ -182,3 +182,9 @@
   color: gray;
   font-size: 18px;
 }
+
+.submitComment {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+}

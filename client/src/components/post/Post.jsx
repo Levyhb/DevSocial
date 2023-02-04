@@ -16,6 +16,7 @@ export default function Post({ post }) {
   const [isComment, setIsComment] = useState(false);
   const [comments, setComments] = useState([]);
   const [userComments, setUserComments] = useState([]);
+  const [newComment, setNewComment] = useState('');
 
   const { user: currentUser } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -54,7 +55,7 @@ export default function Post({ post }) {
       setUserComments(users);
     };
     fetchComments();
-  }, [post._id, post.userId])
+  }, [post._id, comments])
 
 
   const deletePost = async () => {
@@ -63,6 +64,19 @@ export default function Post({ post }) {
       const id = post._id;
       await axios.delete(`/posts/${id}`, userId)
       window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const submitComment = async (e) => {
+    e.preventDefault();
+    const comment = {
+      userId: currentUser._id,
+      comment: newComment
+    }
+    try {
+      await axios.put(`posts/${post._id}/comments`, comment);
     } catch (error) {
       console.log(error);
     }
@@ -142,8 +156,10 @@ export default function Post({ post }) {
                     ? PF+currentUser.profilePicture
                     : PF + "person/noAvatar.png"
                 } alt="" className="commentUserProfilePicture"/>
-                <input type="text" className="writeComment" placeholder="Write a reply"/>
-                <button className="sendComment">send</button>
+                <form className="submitComment" onSubmit={submitComment}>
+                  <input type="text" className="writeComment" placeholder="Write a reply" onChange={(c) => setNewComment(c.target.value)}/>
+                  <button className="sendComment">send</button>
+                </form>
               </div>
             </div>
           )}
