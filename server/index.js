@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const helmet = require('helmet');
+const cors = require('cors');
+
 const PORT = process.env.PORT || 8800;
 
 const usersRoute = require('./routes/users');
@@ -15,7 +17,15 @@ const messageRoute = require('./routes/messages');
 const multer = require("multer");
 const path = require("path")
 
+
 dotenv.config();
+
+app.use(helmet());
+app.use(cors());
+
+app.get("/", (res, req) => {
+    res.status(200).send("Security into a Node.js API")
+})
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -26,7 +36,6 @@ mongoose.connect(process.env.MONGO_URL, {
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 app.use(express.json());
-app.use(helmet());
 app.use(morgan('common'));
 
 const storage = multer.diskStorage({
