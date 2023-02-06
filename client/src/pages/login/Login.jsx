@@ -3,6 +3,7 @@ import "./login.css";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import Loading from "../../components/loading/Loading";
 
 export default function Login() {
   const email = useRef();
@@ -49,7 +50,7 @@ export default function Login() {
             />
             <button className="loginButton" type="submit" disabled={isFetching}>
               {isFetching ? (
-                "Loading"
+                <Loading />
               ) : (
                 "Log In"
               )}
@@ -58,7 +59,7 @@ export default function Login() {
             <Link to="/register" className="linkToRegister">
               <button className="loginRegisterButton">
                 {isFetching ? (
-                  "loading"
+                  <Loading />
                 ) : (
                   "Create a New Account"
                 )}

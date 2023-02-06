@@ -53,7 +53,7 @@
 }
 
 .loginButton {
-  height: 40px;
+  height: 45px;
   border-radius: 10px;
   border: none;
   color: white;
@@ -82,18 +82,20 @@
   display: flex;
   justify-content: center;
   text-decoration: none;
+  width: 100%;
 }
 
 .loginRegisterButton button {
   margin: 0 auto;
-  height: 30px;
+  height: 45px;
   border-radius: 10px;
   border: none;
   color: white;
   background-color: #329c1d;
-  font-size: 18px;
+  font-size:  20px;
   font-weight: 500;
   cursor: pointer;
+  width: 80%;
 }
 
 .loginRegisterButton:hover {
