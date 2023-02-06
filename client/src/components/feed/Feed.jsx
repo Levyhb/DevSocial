@@ -1,14 +1,11 @@
 import Post from "../post/Post";
 import Share from "../share/Share";
 import "./feed.css";
-// import { post } from "../../reactSocialData";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
-import Loading from "../loading/LoadingSpinner";
 import LoadingPost from "../loading/LoadingPost";
-
 
 export default function Feed({ username }) {
   const [posts, setPost] = useState();
@@ -32,18 +29,15 @@ export default function Feed({ username }) {
     <div className="feed">
       <div className="feedWrapper">
         {(!username || username === user.username) && <Share />}
-        {!posts && (
-          <LoadingPost />
-        )}
-        {posts && posts.length > 0 ? posts.map((p) => (
-          <Post key={p._id} post={p} />
-        )) : (
+        {!posts && <LoadingPost />}
+        {posts && posts.length > 0 ? (
+          posts.map((p) => <Post key={p._id} post={p} />)
+        ) : (
           <div className="noPostFound">
             <h2>No post was found</h2>
             <h3>Follow a friend to see what they've been posting</h3>
           </div>
         )}
-        
       </div>
     </div>
   );
