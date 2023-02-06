@@ -6,19 +6,24 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
+import Loading from "../loading/LoadingSpinner";
+import LoadingPost from "../loading/LoadingPost";
+
 
 export default function Feed({ username }) {
-  const [posts, setPost] = useState([]);
-  const { user } = useContext(AuthContext)
+  const [posts, setPost] = useState();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchPost = async () => {
       const res = username
         ? await axios.get(`/posts/profile/${username}`)
-        : await axios.get("/posts/timeline/"+ user._id);
-      setPost(res.data.sort((p1, p2) => {
-        return new Date(p2.createdAt) - new Date(p1.createdAt);
-      }));
+        : await axios.get("/posts/timeline/" + user._id);
+      setPost(
+        res.data.sort((p1, p2) => {
+          return new Date(p2.createdAt) - new Date(p1.createdAt);
+        })
+      );
     };
     fetchPost();
   }, [username, user._id]);
@@ -26,10 +31,19 @@ export default function Feed({ username }) {
   return (
     <div className="feed">
       <div className="feedWrapper">
-      {(!username || username === user.username) && <Share />}
-        {posts.length > 0 && posts.map((p) => (
+        {(!username || username === user.username) && <Share />}
+        {!posts && (
+          <LoadingPost />
+        )}
+        {posts && posts.length > 0 ? posts.map((p) => (
           <Post key={p._id} post={p} />
-        ))}
+        )) : (
+          <div className="noPostFound">
+            <h2>No post was found</h2>
+            <h3>Follow a friend to see what they've been posting</h3>
+          </div>
+        )}
+        
       </div>
     </div>
   );

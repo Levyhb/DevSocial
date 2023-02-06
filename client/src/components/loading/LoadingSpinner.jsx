@@ -1,7 +1,7 @@
 import * as React from 'react';
-import "./loading.css";
+import "./loadingSpinner.css";
 
-export default function Loading() {
+export default function LoadingSpinner() {
   return (
     <div id="loading"></div>
   );
