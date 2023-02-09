@@ -19,10 +19,19 @@ const path = require("path");
 
 dotenv.config();
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.use(helmet());
 app.use(
   cors({
-    origin: ["https://api-react-social.onrender.com", "http://localhost:3000"],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
