@@ -1,6 +1,6 @@
-# DevSocial
+# React_Social
 
-DevSocial consiste em uma aplicação full stack de uma rede social semelhante ao facebook. 
+React_Social consiste em uma aplicação full stack de uma rede social semelhante ao facebook. 
 
 
 ## Stacks utilizada
