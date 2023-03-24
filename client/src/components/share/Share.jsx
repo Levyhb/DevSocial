@@ -14,6 +14,7 @@ import axios from "axios";
 
 export default function Share() {
   const { user } = useContext(AuthContext);
+  const AR = process.env.REACT_APP_API_REF;
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [desc, setDesc] = useState('');
   const [file, setFile] = useState(null);
@@ -39,7 +40,7 @@ export default function Share() {
     }
 
     try {
-      await axios.post("/posts", newPost);
+      await axios.post(`${AR}/posts`, newPost);
       window.location.reload();
     } catch (err) {
       console.log(err);

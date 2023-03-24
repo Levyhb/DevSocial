@@ -11,6 +11,7 @@ import { io } from "socket.io-client";
 
 
 export default function Rightbar({ user }) {
+  const AR = process.env.REACT_APP_API_REF;
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
@@ -40,12 +41,12 @@ export default function Rightbar({ user }) {
   const handleClick = async () => {
     try {
       if (followed) {
-        await axios.put("/users/" + user._id + "/unfollow", {
+        await axios.put(`${AR}/users/` + user._id + "/unfollow", {
           userId: currentUser._id,
         });
         dispatch({type: "UNFOLLOW", payload: user._id})
       } else {
-        await axios.put("/users/" + user._id + "/follow", {
+        await axios.put(`${AR}/users/` + user._id + "/follow", {
           userId: currentUser._id,
         });
         dispatch({type: "FOLLOW", payload: user._id})
@@ -61,7 +62,7 @@ export default function Rightbar({ user }) {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get(`/users/friends/${user._id}`);
+        const friendList = await axios.get(`${AR}/users/friends/${user._id}`);
         setFriends(friendList.data);
       } catch (error) {
         console.log(error);

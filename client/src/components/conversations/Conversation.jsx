@@ -6,12 +6,13 @@ import "./conversation.css";
 export default function Conversation({ conversation, currentUser }) {
   const [user, setUser] = useState(null);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const AR = process.env.REACT_APP_API_REF;
 
   useEffect(() => {
     const friendId = conversation.members.find((m) => m !== currentUser._id);
 
     const getUser = async () => {
-      const res = await axios.get(`/users?userId=${friendId}`);
+      const res = await axios.get(`${AR}/users?userId=${friendId}`);
       setUser(res.data);
     };
     getUser();

@@ -9,6 +9,7 @@ import "./EditBackgroundProfile.css"
 export default function EditBackgroundProfile({ user }) {
   const { user: currentUser } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const AR = process.env.REACT_APP_API_REF;
 
   const updateBackground = async (e) => {
     e.preventDefault();
@@ -23,7 +24,7 @@ export default function EditBackgroundProfile({ user }) {
       data.append("file", coverBackground);
       user.colorPicture = fileName;
       try {
-        await axios.post("/api/upload", data);
+        await axios.post(`${AR}/api/upload`, data);
       } catch (error) {
         console.log(error);
       }

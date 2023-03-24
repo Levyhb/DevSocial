@@ -13,6 +13,7 @@ export default function Search() {
   const [searchedUser, setSearchedUser] = useState([]);
   const [redirect, setRedirect] = useState(false);
 
+  const AR = process.env.REACT_APP_API_REF;
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user } = useContext(AuthContext);
 
@@ -20,7 +21,7 @@ export default function Search() {
     setRedirect(false);
     const getSearchedUser = async () => {
       try {
-        const res = await axios.get(`/users/${query}`);
+        const res = await axios.get(`${AR}/users/${query}`);
         setSearchedUser(res.data);
       } catch (err) {
         console.log(err);

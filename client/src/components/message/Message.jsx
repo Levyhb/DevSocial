@@ -5,13 +5,14 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 export default function Message({ message, own, currentChatUsers }) {
+  const AR = process.env.REACT_APP_API_REF;
   const { user } = useContext(AuthContext);
   const [chatUser, setChatUser] = useState(null);
 
   useEffect(() => {
     const user = async () => {
       try {
-        const userInfo = await axios.get(`users/${currentChatUsers[1]}`);
+        const userInfo = await axios.get(`${AR}/users/${currentChatUsers[1]}`);
         setChatUser(userInfo.data);
       } catch (err) {
         console.log(err);

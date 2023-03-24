@@ -4,12 +4,13 @@ import { useState } from "react";
 import "./chatOnline.css";
 
 export default function ChatOnline({onlineUsers, currentId, setCurrentChat }) {
+  const AR = process.env.REACT_APP_API_REF;
   const [friends, setFriends] = useState([]);
   const [onlineFriends, setOnlineFriends] = useState([]);
 
   useEffect(() => {
     const getFriends = async () => {
-      const res = await axios.get(`/users/friends/${currentId}`);
+      const res = await axios.get(`${AR}/users/friends/${currentId}`);
       setFriends(res.data);
     };
 
@@ -22,7 +23,7 @@ export default function ChatOnline({onlineUsers, currentId, setCurrentChat }) {
 
   const handleClick = async (u) => {
     try {
-      const res = await axios.get(`/conversations/find/${currentId}/${u._id}`);
+      const res = await axios.get(`${AR}/conversations/find/${currentId}/${u._id}`);
       setCurrentChat(res.data);
     } catch (err) {
       console.log(err);

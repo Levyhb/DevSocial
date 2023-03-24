@@ -20,10 +20,11 @@ export default function Post({ post }) {
 
   const { user: currentUser } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const AR = process.env.REACT_APP_API_REF;
 
   const likeHandler = () => {
     try {
-      axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
+      axios.put(`${AR}/posts/${post._id}/like`, { userId: currentUser._id });
     } catch (err) {
       console.log(err);
     }
@@ -37,7 +38,7 @@ export default function Post({ post }) {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`https://api-react-social.onrender.com/users?userId=${post.userId}`);
+      const res = await axios.get(`${AR}/users?userId=${post.userId}`);
       setUser(res.data);
     };
     fetchUser();
@@ -45,10 +46,10 @@ export default function Post({ post }) {
 
   useEffect(() => {
     const fetchComments = async () => {
-      const res = await axios.get(`/posts/${post._id}/comments`)
+      const res = await axios.get(`${AR}/posts/${post._id}/comments`)
       setComments(res.data);
       const usersPromises = res.data.map(async (u) => {
-        const userResponse = await axios.get(`https://api-react-social.onrender.com/users?userId=${u.userId}`)
+        const userResponse = await axios.get(`${AR}/users?userId=${u.userId}`)
         return userResponse.data
       })
       const users = await Promise.all(usersPromises);
@@ -62,7 +63,7 @@ export default function Post({ post }) {
     const userId = currentUser._id
     try {
       const id = post._id;
-      await axios.delete(`/posts/${id}`, userId)
+      await axios.delete(`${AR}/posts/${id}`, userId)
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -76,7 +77,7 @@ export default function Post({ post }) {
       comment: newComment
     }
     try {
-      await axios.put(`posts/${post._id}/comments`, comment);
+      await axios.put(`${AR}/posts/${post._id}/comments`, comment);
     } catch (error) {
       console.log(error);
     }

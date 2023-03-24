@@ -20,12 +20,13 @@ export default function Profile() {
   const [from, setFrom] = useState(currentUser?.from);
   const [user, setUser] = useState({});
 
+  const AR = process.env.REACT_APP_API_REF;
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { username } = useParams();
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
+      const res = await axios.get(`${AR}/users?username=${username}`);
       setUser(res.data);
     };
     fetchUser();
@@ -48,14 +49,14 @@ export default function Profile() {
       data.append("file", file);
       user.profilePicture = fileName;
       try {
-        await axios.post("/api/upload", data);
+        await axios.post(`${AR}/api/upload`, data);
       } catch (err) {
         console.log(err);
       }
     }
 
     try {
-      await axios.put(`/users/${currentUser._id}`, user);
+      await axios.put(`${AR}/users/${currentUser._id}`, user);
       localStorage.removeItem("user");
       window.location.reload();
     } catch (err) {

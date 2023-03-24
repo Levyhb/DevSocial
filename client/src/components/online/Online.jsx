@@ -5,12 +5,13 @@ import "./online.css";
 
 export default function Online({ onlineUsers, currentId }) {  
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const AR = process.env.REACT_APP_API_REF;
   const [onlineFriends, setOnlineFriends] = useState([]);
   const [friends, setFriends] = useState([]);
   
   useEffect(() => {
     const getFriends = async () => {
-      const res = await axios.get(`/users/friends/${currentId}`);
+      const res = await axios.get(`${AR}/users/friends/${currentId}`);
       setFriends(res.data);
     };
     
