@@ -3,7 +3,6 @@
     "primereact": "^8.7.3"
   },
   "scripts": {
-    "prestart": "cd ./client && npm install && cd .. && cd ./server && npm install",
-    "dev": "cd ./client && npm start && cd .. && cd ./server && npm start"
+    "prestart": "cd ./client && npm install && cd .. && cd ./server && npm install"
   }
 }

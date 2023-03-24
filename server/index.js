@@ -1,8 +1,8 @@
 const express = require("express");
-const cors = require('cors');
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+const cors = require('cors');
 const helmet = require("helmet");
 const app = express();
 
