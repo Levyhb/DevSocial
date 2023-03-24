@@ -37,7 +37,7 @@ export default function Post({ post }) {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${post.userId}`);
+      const res = await axios.get(`https://api-react-social.onrender.com/users?userId=${post.userId}`);
       setUser(res.data);
     };
     fetchUser();
@@ -48,14 +48,14 @@ export default function Post({ post }) {
       const res = await axios.get(`/posts/${post._id}/comments`)
       setComments(res.data);
       const usersPromises = res.data.map(async (u) => {
-        const userResponse = await axios.get(`/users?userId=${u.userId}`)
+        const userResponse = await axios.get(`https://api-react-social.onrender.com/users?userId=${u.userId}`)
         return userResponse.data
       })
       const users = await Promise.all(usersPromises);
       setUserComments(users);
     };
     fetchComments();
-  }, [post._id, comments])
+  }, [post._id])
 
 
   const deletePost = async () => {

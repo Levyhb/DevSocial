@@ -1,10 +1,10 @@
 const express = require("express");
-const app = express();
+const cors = require('cors');
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
-const cors = require("cors");
+const app = express();
 
 const PORT = process.env.PORT || 8800;
 
@@ -16,40 +16,26 @@ const messageRoute = require("./routes/messages");
 
 const multer = require("multer");
 const path = require("path");
-
 dotenv.config();
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
+const uri = process.env.MONGO_URI
+
+mongoose.connect(uri, { useNewUrlParser: true }, function(error) {
+  if (error) {
+    console.log('Erro ao conectar ao MongoDB:', error);
+  } else {
+    console.log('Conexão bem-sucedida ao MongoDB!');
+  }
 });
+
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
 
 app.use(helmet());
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-
-app.get("/", (res, req) => {
-  res.status(200).send("Security into a Node.js API");
-});
-
-mongoose.connect(
-  process.env.MONGO_URL,
-  {
-    useNewUrlParser: true,
-  },
-  () => {
-    console.log("Conected to MongoDb");
-  }
-);
+app.use(cors(corsOptions));
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
