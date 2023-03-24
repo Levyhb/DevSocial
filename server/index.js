@@ -34,7 +34,7 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 
-app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(cors(corsOptions));
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
