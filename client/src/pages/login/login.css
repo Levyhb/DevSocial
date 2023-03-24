@@ -23,7 +23,7 @@
 .loginLogo {
   font-size: 50px;
   font-weight: 800;
-  color: #1775ee;
+  color: var(--main-bg-dark);
 }
 
 .loginDesc {

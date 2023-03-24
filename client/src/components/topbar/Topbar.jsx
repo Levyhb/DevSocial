@@ -30,7 +30,7 @@ export default function Topbar() {
     <div className="topbarContainer">
       <div className="topbarLeft">
         <Link to="/">
-          <span className="logo">React_Social</span>
+          <span className="logo">&lt; DevSocial /&gt;</span>
         </Link>
       </div>
       <form className="topbarCenter" onSubmit={searchForAFriend}>

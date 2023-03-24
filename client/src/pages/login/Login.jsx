@@ -26,7 +26,7 @@ export default function Login() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">ReactSocial</h3>
+          <h3 className="loginLogo">&lt; DevSocial /&gt;	</h3>
           <span className="loginDesc">
             Connect with friends and the world around you on ReactSocial.
           </span>

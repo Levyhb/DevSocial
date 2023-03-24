@@ -19,7 +19,7 @@
 .messageText {
   padding: 0.6rem;
   border-radius: 1.25rem;
-  background-color: var(--main-bg-blue);
+  background-color: var(--main-bg-light);
   color: white;
   max-width: 300px;
   overflow-wrap: break-word;

@@ -22,7 +22,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: lightgreen;
+  background-color: var(--main-bg-light);
   position: absolute;
   top: 2px;
   right: 2px;

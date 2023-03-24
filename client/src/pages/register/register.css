@@ -23,7 +23,7 @@
 .loginLogo {
   font-size: 50px;
   font-weight: 800;
-  color: #1775ee;
+  color: var(--main-bg-dark);
 }
 
 .loginDesc {
@@ -57,14 +57,14 @@
   border-radius: 10px;
   border: none;
   color: white;
-  background-color: #1775ee;
+  background-color: var(--success-bg-light);
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
 }
 
 .loginButton:hover {
-  background-color: #166ad8;
+  background-color: var(--success-bg-dark);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.562);
 }
 

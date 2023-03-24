@@ -59,11 +59,11 @@
 }
 
 .confirm {
-  background-color: var(--success-bg-green);
+  background-color: var(--success-bg-light);
 }
 
 .confirm:hover {
-  background-color: var(--success-bg-green-dark);
+  background-color: var(--success-bg-dark);
 }
 
 .cancel {

@@ -8,7 +8,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: limegreen;
+  background-color: var(--main-bg-dark);
   position: absolute;
   top: -2;
   right: -5px;

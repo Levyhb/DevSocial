@@ -1,10 +1,18 @@
 :root {
-  --main-bg-blue: #1877f2;
-  --main-bg-blue-hover: #0c6ceb;
-  --success-bg-green: #18ad18;
-  --success-bg-green-dark: #159e15;
-  --success-bg-green-light: #25da25;
+  --main-bg-light: #18ad18;
+  --main-bg-dark: #159e15;
+  --success-bg-light: #1877f2;
+  --success-bg-dark: #166cdd;
+
+  
+  --success-bg-green: #1877f2;
+  --success-bg-green-dark: #0c6ceb;
+  --success-bg-green-light: #256dda;
   --cancel-bg-red: red;
+  /*
+    1877f2
+    0c6ceb
+  */
 }
 
 * {

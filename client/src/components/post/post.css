@@ -166,14 +166,14 @@
 .sendComment {
   cursor: pointer;
   padding: 0.5rem;
-  background-color: var(--success-bg-green-light);
+  background-color: var(--success-bg-light);
   border: none;
   border-radius: 5px;
   color: white;
 }
 
 .sendComment:hover {
-  background-color: var(--success-bg-green-dark);
+  background-color: var(--success-bg-dark);
 }
 
 .noCommentariesText {
