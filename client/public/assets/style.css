@@ -4,15 +4,8 @@
   --success-bg-light: #1877f2;
   --success-bg-dark: #166cdd;
 
-  
-  --success-bg-green: #1877f2;
-  --success-bg-green-dark: #0c6ceb;
-  --success-bg-green-light: #256dda;
   --cancel-bg-red: red;
-  /*
-    1877f2
-    0c6ceb
-  */
+
 }
 
 * {
