@@ -51,7 +51,7 @@ export default function Profile() {
       try {
         await axios.post(`${AR}/api/upload`, data);
       } catch (err) {
-        console.log(err);
+        return console.log(err);
       }
     }
 
@@ -122,7 +122,7 @@ export default function Profile() {
                           <img
                             src={URL.createObjectURL(file)}
                             className="shareImg"
-                            alt="share img"
+                            alt="update profile img"
                           />
                         ) : (
                           <img

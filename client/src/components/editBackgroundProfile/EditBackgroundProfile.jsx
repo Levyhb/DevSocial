@@ -10,6 +10,7 @@ export default function EditBackgroundProfile({ user }) {
   const { user: currentUser } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const AR = process.env.REACT_APP_API_REF;
+  const [coverBackground, setCoverBackground] = useState(null);
 
   const updateBackground = async (e) => {
     e.preventDefault();
@@ -39,7 +40,6 @@ export default function EditBackgroundProfile({ user }) {
     }
   };
 
-  const [coverBackground, setCoverBackground] = useState(null);
   return (
     <div className="coverBackground">
       {coverBackground ? (
@@ -58,24 +58,25 @@ export default function EditBackgroundProfile({ user }) {
           }
           alt=""
         />
-      )}
+      )} 
       <EditIcon className="editIcon" />
-      <label htmlFor="profileImg" className="editIcon">
+      <label htmlFor="profileBackgroundImg" className="editIcon">
         <EditIcon className="editIcon" />
         <input
           style={{ display: "none" }}
           type="file"
-          id="profileImg"
+          id="profileBackgroundImg"
           accept=".png, .jpeg, .jpg"
           onChange={(e) => setCoverBackground(e.target.files[0])}
         />
       </label>
       {coverBackground && (
         <div className="confirmButton">
-          <span>Confirm the new background? </span>
+          <span>Confirm? </span>
           <button className="confirm" onClick={updateBackground}>
             <CheckIcon />
           </button>
+          <span>Cancel</span>
           <button className="cancel" onClick={() => setCoverBackground(null)}>
             <ClearIcon />
           </button>
