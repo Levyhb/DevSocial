@@ -97,7 +97,8 @@ router.get("/:username", async (req, res) => {
       username: { $regex: "^" + username, $options: "i" },
     });
     const everyUser = user.map(
-      ({ username, profilePicture, followers, followings }) => ({
+      ({ id, username, profilePicture, followers, followings }) => ({
+        id,
         username,
         profilePicture,
         followers,
