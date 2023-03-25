@@ -12,7 +12,7 @@ DevSocial consiste em uma aplicação full stack de uma rede social semelhante a
 **Outras Tecnologias:** - Socket.io
 ## Demonstração
 
-- [Veja o resultado aqui:](https://react-social-ten.vercel.app/)
+- [Veja o resultado aqui](https://dev-social-br.vercel.app/)
 - Prévia do projeto: (prev desatualizada)
 
 https://user-images.githubusercontent.com/94788307/212980891-37fceeb9-ee2b-40bf-ada3-948be12ed36f.mp4
