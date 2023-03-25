@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "animate.css": "^4.1.1",
     "primereact": "^8.7.3"
   },
   "scripts": {
