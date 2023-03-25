@@ -23,7 +23,7 @@ export default function Share() {
     e.preventDefault();
     const newPost = {
       userId: user._id,
-      desc: desc.current.value,
+      desc: desc,
     };
 
     if (file) {
@@ -33,9 +33,9 @@ export default function Share() {
       data.append("file", file);
       newPost.img = fileName;
       try {
-        await axios.post("/api/upload", data);
+        await axios.post(`${AR}/api/upload`, data);
       } catch (err) {
-        console.log(err);
+        return console.log(err);
       }
     }
 
@@ -51,7 +51,6 @@ export default function Share() {
 
   return (
     <div className="share">
-      {console.log(desc)}
       <div className="shareWrapper">
         <div className="shareTop">
           <img
