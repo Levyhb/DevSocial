@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./comments.css"
 
 export default function Comments({ comment, userToComment }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
-    <div>
+    <div className="comments-container">
       {
         userToComment && (
         <div className="userComments">

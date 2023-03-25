@@ -1,0 +1,4 @@
+.comments-container {
+  animation: fadeInDown;
+  animation-duration: 1s;
+}
