@@ -97,9 +97,11 @@
 }
 
 .rightbarFollowing {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.25rem;
+  gap: 5px;
+  margin-bottom: 1rem;
 }
 
 .rightbarFollowingImg {
