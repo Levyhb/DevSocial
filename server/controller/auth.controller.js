@@ -6,7 +6,7 @@ const register = async (req, res) => {
     const { type, response } = await loginService.register(username, email, password);
     return res.status(type).json(response);
   } catch (error) {
-    return res.status(type).json(err);
+    return res.status(400).json(err);
   }
 }
 
@@ -17,7 +17,7 @@ const login = async (req, res) => {
 
     return res.status(type).json(response);
   } catch (err) {
-    return res.status(type).json(err);
+    return res.status(400).json(err);
   }
 }
 
