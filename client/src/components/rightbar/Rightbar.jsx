@@ -14,7 +14,9 @@ export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
-  const [followed, setFollowed] = useState(currentUser.followings.includes(user?.id));
+  const [followed, setFollowed] = useState(
+    currentUser.followings.includes(user?.id)
+  );
   const [onlineUsers, setOnlineUsers] = useState([]);
   const socket = useRef();
   let navigate = useNavigate();
@@ -31,7 +33,7 @@ export default function Rightbar({ user }) {
       );
     });
   }, [user]);
-  
+
   useEffect(() => {
     setFollowed(currentUser.followings.includes(user?._id));
   }, [currentUser, user._id]);
@@ -42,13 +44,12 @@ export default function Rightbar({ user }) {
         await axios.put(`${AR}/users/` + user._id + "/unfollow", {
           userId: currentUser._id,
         });
-        dispatch({type: "UNFOLLOW", payload: user._id})
+        dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
         await axios.put(`${AR}/users/` + user._id + "/follow", {
           userId: currentUser._id,
         });
-        dispatch({type: "FOLLOW", payload: user._id})
-        
+        dispatch({ type: "FOLLOW", payload: user._id });
       }
       setFollowed(!followed);
     } catch (err) {
@@ -57,19 +58,18 @@ export default function Rightbar({ user }) {
   };
 
   const iniateConversation = async () => {
-
     try {
       const conversationData = {
         senderId: currentUser._id,
-        receiverId: user._id
-      }
+        receiverId: user._id,
+      };
       await axios.post(`${AR}/conversations/`, conversationData);
-      navigate("/messenger")
+      navigate("/messenger");
     } catch (error) {
-      navigate("/messenger")
+      navigate("/messenger");
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     const getFriends = async () => {
@@ -87,7 +87,7 @@ export default function Rightbar({ user }) {
     return (
       <>
         <img className="rightbarAd" src={`${PF}ad.png`} alt="" />
-        <Online onlineUsers={onlineUsers} currentId={currentUser._id}/>
+        <Online onlineUsers={onlineUsers} currentId={currentUser._id} />
       </>
     );
   };
@@ -95,8 +95,8 @@ export default function Rightbar({ user }) {
   const ProfileRightBar = () => {
     return (
       <>
-      {console.log(user)}
-        { user.username !== currentUser.username && (
+        {console.log(user)}
+        {user.username !== currentUser.username && (
           <div className="follow-wrapper">
             <button className="rightbarFollowButton" onClick={handlefollow}>
               {followed ? "Unfollow" : "Follow"}
@@ -136,7 +136,7 @@ export default function Rightbar({ user }) {
                 <img
                   src={
                     friend.profilePicture
-                      ? PF+friend.profilePicture
+                      ? PF + friend.profilePicture
                       : PF + "person/noAvatar.png"
                   }
                   alt=""
@@ -154,7 +154,8 @@ export default function Rightbar({ user }) {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {window.location.pathname === "/" || window.location.pathname === "/search"? (
+        {window.location.pathname === "/" ||
+        window.location.pathname === "/search" ? (
           <HomeRightBar />
         ) : (
           <ProfileRightBar />
