@@ -23,21 +23,21 @@ Para instalar dependências necessárias entra na raiz do projeto e rodar o  com
 npm run prestart
 ```
 
-### Para iniciar o front-end
+#### Para iniciar o front-end
 ```
 cd client && npm start
 ```
 
-### Para iniciar o back-end
+#### Para iniciar o back-end
 ```
 cd server && npm start
 ```
 
-### Para iniciar o socket.io
+#### Para iniciar o socket.io
 ```
 cd socket && npm start
 ```
-## Variáveis de Ambiente
+### Variáveis de Ambiente
 
 Para rodar esse projeto, você vai precisar visualizar um arquivo ".env.example" dentro da pasta client e outro na pasta server e seguir as instruções
 
