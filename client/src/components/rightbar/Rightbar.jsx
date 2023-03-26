@@ -3,12 +3,11 @@ import Online from "../online/Online";
 import { useEffect, useRef } from "react";
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove } from "@mui/icons-material";
 import { io } from "socket.io-client";
-
 
 export default function Rightbar({ user }) {
   const AR = process.env.REACT_APP_API_REF;
@@ -16,15 +15,14 @@ export default function Rightbar({ user }) {
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [followed, setFollowed] = useState(currentUser.followings.includes(user?.id));
-
   const [onlineUsers, setOnlineUsers] = useState([]);
   const socket = useRef();
+  let navigate = useNavigate();
 
   useEffect(() => {
     socket.current = io("ws://localhost:8900");
   }, []);
 
-  
   useEffect(() => {
     socket.current.emit("addUser", user?._id);
     socket.current.on("getUsers", (users) => {
@@ -38,7 +36,7 @@ export default function Rightbar({ user }) {
     setFollowed(currentUser.followings.includes(user?._id));
   }, [currentUser, user._id]);
 
-  const handleClick = async () => {
+  const handlefollow = async () => {
     try {
       if (followed) {
         await axios.put(`${AR}/users/` + user._id + "/unfollow", {
@@ -58,7 +56,21 @@ export default function Rightbar({ user }) {
     }
   };
 
-  
+  const iniateConversation = async () => {
+
+    try {
+      const conversationData = {
+        senderId: currentUser._id,
+        receiverId: user._id
+      }
+      await axios.post(`${AR}/conversations/`, conversationData);
+      navigate("/messenger")
+    } catch (error) {
+      navigate("/messenger")
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     const getFriends = async () => {
       try {
@@ -74,12 +86,6 @@ export default function Rightbar({ user }) {
   const HomeRightBar = () => {
     return (
       <>
-        {/* <div className="birthdayContainer">
-          <img className="birthdayImg" src={`${PF}gift.png`} alt="" />
-          <span className="birthdayText">
-            <b>Pola Fooster</b> and <b>3 other friends</b> have a birthday today
-          </span>
-        </div> */}
         <img className="rightbarAd" src={`${PF}ad.png`} alt="" />
         <Online onlineUsers={onlineUsers} currentId={currentUser._id}/>
       </>
@@ -89,11 +95,17 @@ export default function Rightbar({ user }) {
   const ProfileRightBar = () => {
     return (
       <>
-        {user.username !== currentUser.username && (
-          <button className="rightbarFollowButton" onClick={handleClick}>
-            {followed ? "Unfollow" : "Follow"}
-            {followed ? <Remove /> : <Add />}
-          </button>
+      {console.log(user)}
+        { user.username !== currentUser.username && (
+          <div className="follow-wrapper">
+            <button className="rightbarFollowButton" onClick={handlefollow}>
+              {followed ? "Unfollow" : "Follow"}
+              {followed ? <Remove /> : <Add />}
+            </button>
+            <button className="rightbarMsgButton" onClick={iniateConversation}>
+              Sent Message +
+            </button>
+          </div>
         )}
         <h4 className="rightbarTitle">User Information</h4>
         <div className="rightbarInfo">

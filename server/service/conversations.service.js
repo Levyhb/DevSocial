@@ -2,6 +2,12 @@ const Conversation = require("../models/Conversation");
 
 const createConversation = async (senderId, receiverId) => {
   try {
+    const findConversation = await Conversation.findOne({
+      members: { $all: [senderId, receiverId] },
+    });
+    if (findConversation) {
+      return { type: 404, response: "conversation already exists"}
+    }
     const newConversation = new Conversation({
       members: [senderId, receiverId],
     });

@@ -102,7 +102,6 @@
   margin-bottom: 1.25rem;
 }
 
-
 .rightbarFollowingImg {
   width: 6.25rem;
   height: 6.25rem;
@@ -110,14 +109,30 @@
   border-radius: 5px;
 }
 
+.follow-wrapper {
+  display: flex;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
 .rightbarFollowButton {
-  margin-top: 1.875rem;
-  margin-bottom: 0.6rem;
   border: none;
   background-color: var(--main-bg-light);
   color: white;
   border-radius: 5px;
   padding: 5px 0.6rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.rightbarMsgButton {
+  border: none;
+  background-color: var(--success-bg-light);
+  color: white;
+  border-radius: 5px;
+  padding: 10px 0.6rem;
   display: flex;
   align-items: center;
   font-weight: 500;
