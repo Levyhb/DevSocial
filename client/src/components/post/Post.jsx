@@ -16,7 +16,7 @@ export default function Post({ post }) {
   const [isComment, setIsComment] = useState(false);
   const [comments, setComments] = useState([]);
   const [userComments, setUserComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
 
   const { user: currentUser } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -44,48 +44,48 @@ export default function Post({ post }) {
     fetchUser();
   }, [post.userId]);
 
-  useEffect(() => {
-    const fetchComments = async () => {
-      const res = await axios.get(`${AR}/posts/${post._id}/comments`)
-      setComments(res.data);
-      const usersPromises = res.data.map(async (u) => {
-        const userResponse = await axios.get(`${AR}/users?userId=${u.userId}`)
-        return userResponse.data
-      })
-      const users = await Promise.all(usersPromises);
-      setUserComments(users);
-    };
-    fetchComments();
-  }, [post._id])
+  const fetchComments = async () => {
+    const res = await axios.get(`${AR}/posts/${post._id}/comments`);
+    setComments(res.data);
+    const usersPromises = res.data.map(async (u) => {
+      const userResponse = await axios.get(`${AR}/users?userId=${u.userId}`);
+      return userResponse.data;
+    });
+    const users = await Promise.all(usersPromises);
+    setUserComments(users);
+  };
 
+  useEffect(() => {
+    fetchComments();
+  }, [post._id]);
 
   const deletePost = async () => {
-    const userId = currentUser._id
+    const userId = currentUser._id;
     try {
       const id = post._id;
-      await axios.delete(`${AR}/posts/${id}`, userId)
+      await axios.delete(`${AR}/posts/${id}`, userId);
       window.location.reload();
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const submitComment = async (e) => {
     e.preventDefault();
     const comment = {
       userId: currentUser._id,
-      comment: newComment
-    }
+      comment: newComment,
+    };
     try {
       await axios.put(`${AR}/posts/${post._id}/comments`, comment);
+      fetchComments();
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className="post">
-
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
@@ -94,7 +94,7 @@ export default function Post({ post }) {
                 className="postProfileImg"
                 src={
                   user.profilePicture
-                    ? PF+user.profilePicture
+                    ? PF + user.profilePicture
                     : PF + "person/noAvatar.png"
                 }
                 alt=""
@@ -103,18 +103,26 @@ export default function Post({ post }) {
             <span className="postUsername">{user.username}</span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
-          <div className="postTopRight" >
+          <div className="postTopRight">
             {post?.userId === currentUser?._id && (
-              <MoreVert onClick={() => {setInfoPost(!infoPost)}}/>
+              <MoreVert
+                onClick={() => {
+                  setInfoPost(!infoPost);
+                }}
+              />
             )}
             {infoPost && (
-              <div className="deletePostWrapper" onClick={deletePost}>Delete Post</div>
+              <div className="deletePostWrapper" onClick={deletePost}>
+                Delete Post
+              </div>
             )}
           </div>
         </div>
         <div className="postCenter">
           <p className="postText">{post?.desc}</p>
-          {post.img && <img className="postImg" src={PF + post.img} alt="post" />}
+          {post.img && (
+            <img className="postImg" src={PF + post.img} alt="post" />
+          )}
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
@@ -132,38 +140,53 @@ export default function Post({ post }) {
             />
             <span className="postLikeCounter">{like} people like it</span>
           </div>
-          <div className="postBottomRight" onClick={() => setIsComment(!isComment)}>
+          <div
+            className="postBottomRight"
+            onClick={() => setIsComment(!isComment)}
+          >
             Comment <Comment />
-            </div>
+          </div>
         </div>
-          {isComment && (
-            <div>
-              <div className="commentsWrapper">
-                { comments.length === 0 && userComments.length === 0 ? (
-                  <div className="noCommentariesText">
-                    <h3>Be the first to comment!</h3>
-                  </div>
-                ) : comments.map((e) => {
-                  const findUser = userComments.find((user) => user._id === e.userId )
+        {isComment && (
+          <div>
+            <div className="commentsWrapper">
+              {comments.length === 0 && userComments.length === 0 ? (
+                <div className="noCommentariesText">
+                  <h3>Be the first to comment!</h3>
+                </div>
+              ) : (
+                comments.map((e) => {
+                  const findUser = userComments.find(
+                    (user) => user._id === e.userId
+                  );
                   return (
-                      <Comments comment={e.comment} userToComment={findUser}/>
-                    )
-                  })}
-
-              </div>
-              <div className="writeCommentBox">
-                <img src={
-                  currentUser.profilePicture
-                    ? PF+currentUser.profilePicture
-                    : PF + "person/noAvatar.png"
-                } alt="" className="commentUserProfilePicture"/>
-                <form className="submitComment" onSubmit={submitComment}>
-                  <input type="text" className="writeComment" placeholder="Write a reply" onChange={(c) => setNewComment(c.target.value)}/>
-                  <button className="sendComment">send</button>
-                </form>
-              </div>
+                    <Comments comment={e.comment} userToComment={findUser} />
+                  );
+                })
+              )}
             </div>
-          )}
+            <div className="writeCommentBox">
+              <img
+                src={
+                  currentUser.profilePicture
+                    ? PF + currentUser.profilePicture
+                    : PF + "person/noAvatar.png"
+                }
+                alt=""
+                className="commentUserProfilePicture"
+              />
+              <form className="submitComment" onSubmit={submitComment}>
+                <input
+                  type="text"
+                  className="writeComment"
+                  placeholder="Write a reply"
+                  onChange={(c) => setNewComment(c.target.value)}
+                />
+                <button className="sendComment">send</button>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
