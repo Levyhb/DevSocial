@@ -1,6 +1,7 @@
 :root {
   --main-bg-light: #18ad18;
   --main-bg-dark: #159e15;
+  --main-bg-dark-hover: #118a11;
   --success-bg-light: #1877f2;
   --success-bg-dark: #166cdd;
   --cancel-bg-red: red;

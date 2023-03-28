@@ -1,5 +1,5 @@
 .topbarContainer {
-  height: 3.1rem;
+  height: 3.5rem;
   width: 100%;
   background-color: var(--main-bg-dark);
   display: flex;
@@ -65,11 +65,16 @@
 }
 
 .topbarLink {
-  margin-right: 10px;
   font-size: 14px;
   cursor: pointer;
   text-decoration: none;
   color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.topbarLink:hover {
+  background-color: var(--main-bg-dark-hover);
 }
 
 .topbarLink span {
