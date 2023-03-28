@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Navigate, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Rightbar from "../../components/rightbar/Rightbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
@@ -11,14 +11,11 @@ export default function Search() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get(`q`);
   const [searchedUser, setSearchedUser] = useState([]);
-  const [redirect, setRedirect] = useState(false);
-
   const AR = process.env.REACT_APP_API_REF;
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    setRedirect(false);
     const getSearchedUser = async () => {
       try {
         const res = await axios.get(`${AR}/users/${query}`);
@@ -38,7 +35,7 @@ export default function Search() {
         <div className="searchWrapper">
           {searchedUser.length > 0 ? (
             searchedUser.map((u) => (
-              <div className="usersInfo" onClick={() => setRedirect(true)}>
+              <Link className="usersInfo" to={"/profile/" + u.username}>
                 <img
                   src={
                     u.profilePicture
@@ -48,8 +45,7 @@ export default function Search() {
                   alt=""
                 />
                 <span>{u.username}</span>
-                {redirect && <Navigate replace to={`/profile/${u.username}`} />}
-              </div>
+              </Link>
             ))
           ) : (
             <div className="noFoundUser">

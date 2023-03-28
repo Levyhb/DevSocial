@@ -25,8 +25,8 @@ function App() {
           element={user ? <Navigate replace to="/" /> : <Register />}
         />
         <Route
-          path="/profile/:username"
-          element={user ? <Profile /> : <Navigate replace to="/   " />}
+          exact path="/profile/:username"
+          element={user ? <Profile /> : <Navigate replace to="/" />}
         />
         <Route
           path="/messenger"
