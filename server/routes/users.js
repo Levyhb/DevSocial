@@ -16,10 +16,10 @@ router.delete("/:id", usersController.deleteUser);
 // Get friends
 router.get("/friends/:userId", usersController.getFriends);
 
-//Follow a User
+// Follow a User
 router.put("/:id/follow", usersController.followUser);
 
-//Unfollow a User
+// Unfollow a User
 router.put("/:id/unfollow", usersController.unfollowUser);
 
 module.exports = router;
