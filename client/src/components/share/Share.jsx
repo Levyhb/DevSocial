@@ -62,11 +62,15 @@ export default function Share() {
             alt="person"
             className="shareProfileImg"
           />
-          <input
+          <textarea
             placeholder={`What´s in your mind ${user.username}?`}
             className="shareInput"
+            cols="30"
+            rows="3"
             onChange={(d) => setDesc(d.target.value)}
-          />
+          >
+            {desc}
+          </textarea>
         </div>
         <hr className="shareHr" />
         { file && (

@@ -130,7 +130,7 @@
 }
 
 .profileEditInfo input,
-textarea {
+.profileEditInfo textarea {
   padding: 0.2rem;
   border: 1px solid gray;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.377);

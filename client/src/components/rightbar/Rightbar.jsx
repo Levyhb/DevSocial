@@ -87,7 +87,7 @@ export default function Rightbar({ user }) {
     return (
       <>
         <div>
-          <p className="rightbar-ad-title">Connect With your friends around the world</p>
+          <p className="rightbar-ad-title">Connect with your friends around the world</p>
           <img className="rightbarAd" src={`${PF}ad.png`} alt="" />
         </div>
         <Online onlineUsers={onlineUsers} currentId={currentUser._id} />

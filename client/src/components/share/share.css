@@ -26,6 +26,9 @@
 .shareInput {
   border: none;
   width: 80%;
+  height: 100%;
+  resize: none;
+  text-align: center;
 }
 
 .shareInput:focus {

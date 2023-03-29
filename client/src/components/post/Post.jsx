@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Comments from "../comments/Comments";
+import SendIcon from '@mui/icons-material/Send';
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
@@ -16,7 +17,7 @@ export default function Post({ post }) {
   const [isComment, setIsComment] = useState(false);
   const [comments, setComments] = useState([]);
   const [userComments, setUserComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
+  const [newComment, setNewComment] = useState(null);
 
   const { user: currentUser } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -76,6 +77,7 @@ export default function Post({ post }) {
       userId: currentUser._id,
       comment: newComment,
     };
+    setNewComment("");
     try {
       await axios.put(`${AR}/posts/${post._id}/comments`, comment);
       fetchComments();
@@ -176,13 +178,15 @@ export default function Post({ post }) {
                 className="commentUserProfilePicture"
               />
               <form className="submitComment" onSubmit={submitComment}>
-                <input
+                <textarea
                   type="text"
                   className="writeComment"
                   placeholder="Write a reply"
                   onChange={(c) => setNewComment(c.target.value)}
-                />
-                <button className="sendComment">send</button>
+                >
+                  { newComment }
+                </textarea>
+                <button className="sendComment"><SendIcon/></button>
               </form>
             </div>
           </div>

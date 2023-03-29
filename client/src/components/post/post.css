@@ -157,10 +157,12 @@
 }
 
 .writeComment {
-  width: 80%;
-  padding-left: 1rem;
+  width: 100%;
+  padding-left: .6rem;
+  padding-top: 0.5rem;
   border-radius: 5px;
   border: 1px solid black;
+  resize: none;
 }
 
 .sendComment {
