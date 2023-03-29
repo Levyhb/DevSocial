@@ -22,10 +22,17 @@
   font-size: 15px;
 }
 
+.rightbar-ad-title {
+  color: #555;
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 18px;
+}
+
 .rightbarAd {
   width: 90%;
   border-radius: 0.6rem;
-  margin: 1.875rem 0 ;
+  margin-bottom: 1.875rem;
 }
 
 .rightbarTitle {
