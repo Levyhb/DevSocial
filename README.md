@@ -13,9 +13,11 @@ DevSocial consiste em uma aplicação full stack de uma rede social semelhante a
 ## Demonstração
 
 - [Veja o resultado aqui](https://dev-social-br.vercel.app/)
-- Prévia do projeto: (prev desatualizada)
+- Prévia do projeto:
 
-https://user-images.githubusercontent.com/94788307/212980891-37fceeb9-ee2b-40bf-ada3-948be12ed36f.mp4
+https://user-images.githubusercontent.com/94788307/228586929-368bdd58-dfec-4615-b9fc-5e6c357aa6e5.mp4
+
+
 ## Como rodar localmente
 Para instalar dependências necessárias entra na raiz do projeto e rodar o  comando:
 
