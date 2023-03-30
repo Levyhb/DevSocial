@@ -1,7 +1,6 @@
 # DevSocial
 
-DevSocial consiste em uma aplicação full stack de uma rede social semelhante ao facebook. 
-
+DevSocial é uma aplicação full stack, desenvolvido com ReactJs, NodeJs, MongoDb e Socket.io. Consiste em uma rede social semelhante ao facebook, onde é possível criar uma conta e fazer login, editar perfil, pesquisar por um usuário, criar postagens, trocar mensagens com outros usuários, entre outras funcionalidades.
 
 ## Stacks utilizada
 
