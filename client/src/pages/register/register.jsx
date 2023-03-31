@@ -32,10 +32,10 @@ export default function Register() {
 
   return (
     <div className="login">
-      <div className="loginWrapper">
+      <div className="loginWrapper flex-col md:flex-row">
         <div className="loginLeft">
-          <h3 className="loginLogo">&lt; DevSocial /&gt;</h3>
-          <span className="loginDesc">
+          <h3 className="loginLogo text-center md:text-[50px]">&lt; DevSocial /&gt;</h3>
+          <span className="loginDesc text-center md:text-[24px]">
             Connect with firends and the world around you on DevSocial.
           </span>
         </div>
