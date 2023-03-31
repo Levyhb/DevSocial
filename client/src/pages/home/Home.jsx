@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Topbar />
-      <div className="homeContainer">
+      <div className="homeContainer block md:flex">
         <Sidebar />
         <Feed />
         <Rightbar user={ user } />
