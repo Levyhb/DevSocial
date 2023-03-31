@@ -36,7 +36,7 @@ export default function Register() {
         <div className="loginLeft">
           <h3 className="loginLogo text-center md:text-[50px]">&lt; DevSocial /&gt;</h3>
           <span className="loginDesc text-center md:text-[24px]">
-            Connect with firends and the world around you on DevSocial.
+            Connect with friends and the world around you on DevSocial.
           </span>
         </div>
         <div className="loginRight">

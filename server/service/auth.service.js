@@ -14,7 +14,8 @@ const register = async (username, email, password) => {
     const newUser = new User({
       username,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      followings: ['63a3223ab400011584b611eb']
     });
   const user = await newUser.save();
 

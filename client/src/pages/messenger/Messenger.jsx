@@ -170,7 +170,7 @@ export default function Messenger() {
                 </form>
               </>
             ) : (
-              <span className="noConversation">
+              <span className="noConversation m-auto w-full">
                 Open a conversation to start a chat
               </span>
             )}
