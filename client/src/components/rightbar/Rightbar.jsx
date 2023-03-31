@@ -133,7 +133,7 @@ export default function Rightbar({ user }) {
           </div>
         </div>
         <h4 className="rightbarTitle text-center md:text-left">User Friends</h4>
-        <div className="rightbarFollowings grid grid-cols-3 grid-rows-2 gap-3 overflow-y-scroll">
+        <div className="rightbarFollowings grid grid-cols-3 overflow-y-scroll max-h-80">
           {friends.map((friend) => (
             <Link to={"/profile/" + friend.username} key={friend._id}>
               <div className="rightbarFollowing ">
