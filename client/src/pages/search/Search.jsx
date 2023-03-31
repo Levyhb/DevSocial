@@ -30,7 +30,7 @@ export default function Search() {
   return (
     <>
       <Topbar />
-      <div className="searchContainer">
+      <div className="searchContainer w-full">
         <Sidebar />
         <div className="searchWrapper">
           {searchedUser.length > 0 ? (
@@ -48,12 +48,12 @@ export default function Search() {
               </Link>
             ))
           ) : (
-            <div className="noFoundUser">
+            <div className="noFoundUser w-full">
               <h2>No user found </h2>
             </div>
           )}
         </div>
-        <Rightbar user={user} />
+        <Rightbar user={user} className="hidden md:flex"/>
       </div>
     </>
   );
