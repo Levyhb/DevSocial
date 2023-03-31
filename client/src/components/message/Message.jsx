@@ -24,7 +24,7 @@ export default function Message({ message, own, currentChatUsers }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className={own ? "message own" : "message"}>
-      <div className="messageTop">
+      <div className="messageTop max-w-xs	">
         <img
           src={
             own
@@ -38,7 +38,7 @@ export default function Message({ message, own, currentChatUsers }) {
           alt=""
           className="messageImg"
         />
-        <p className="messageText">{message.text}</p>
+        <p className="messageText max-w-[200px] text-sm/[16px] md:mx-w-full md:text-[18px]">{message.text}</p>
       </div>
       <div className="messageBottom">{format(message.createdAt)}</div>
     </div>

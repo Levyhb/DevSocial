@@ -19,13 +19,13 @@ export default function Conversation({ conversation, currentUser }) {
   }, [currentUser, conversation]);
 
   return (
-    <div className="conversation">
+    <div className="conversation px-1 md:px-3">
       <img
         src={user && user.profilePicture ? PF+user.profilePicture : PF+"/person/noAvatar.png" }
         alt="profile img"
-        className="conversationImg"
+        className="conversationImg mr-1 md:mr-4 md:w-10 md:h-10"
       />
-      <span className="conversationName">{user && user.username}</span>
+      <span className="conversationName text-sm md:text-[18px]">{user && user.username}</span>
     </div>
   );
 }

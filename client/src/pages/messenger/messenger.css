@@ -3,12 +3,8 @@
   display: flex;
 }
 
-.chatMenu {
-  flex: 3.5;
-}
-
 .chatBox {
-  flex: 5.5;
+  flex: 6;
 }
 
 .chatBoxWrapper {
@@ -38,7 +34,7 @@
 }
 
 .chatSubmitButton {
-  width: 70px;
+  width: 45px;
   height: 40px;
   border: none;
   border-radius: 5px;
@@ -57,7 +53,7 @@
 }
 
 .chatOnline {
-  flex: 3;
+  flex: 2.5;
 }
 
 .chatMenuWrapper, .chatBoxWrapper, .chatOnlineWrapper {

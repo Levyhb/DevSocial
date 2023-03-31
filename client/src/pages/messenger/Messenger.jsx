@@ -10,6 +10,7 @@ import "./messenger.css";
 import axios from "axios";
 import { useRef } from "react";
 import { io } from "socket.io-client";
+import SendIcon from '@mui/icons-material/Send';
 
 export default function Messenger() {
   const AR = process.env.REACT_APP_API_REF;
@@ -104,9 +105,9 @@ export default function Messenger() {
   };
 
   const disabledBtn = (text) => {
-    if(!text) return true
+    if (!text) return true;
     return false;
-  }
+  };
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -116,8 +117,8 @@ export default function Messenger() {
     <>
       <Topbar />
       <div className="messenger">
-        <div className="chatMenu">
-          <div className="chatMenuWrapper">
+        <div className="md:flex md:flex-4 w-36 md:w-60">
+          <div className="chatMenuWrapper px-1 md:px-4">
             <input
               type="text"
               placeholder="Search for a friend"
@@ -135,15 +136,19 @@ export default function Messenger() {
               ))}
           </div>
         </div>
-        <div className="chatBox">
-          <div className="chatBoxWrapper">
+        <div className="chatBox ">
+          <div className="chatBoxWrapper max-w-full">
             {currentChat ? (
               <>
                 <div className="chatBoxTop">
                   {messages &&
                     messages.map((m) => (
                       <div ref={scrollRef}>
-                        <Message message={m} own={m.sender === user._id} currentChatUsers={currentChat.members}/>
+                        <Message
+                          message={m}
+                          own={m.sender === user._id}
+                          currentChatUsers={currentChat.members}
+                        />
                       </div>
                     ))}
                 </div>
@@ -157,10 +162,10 @@ export default function Messenger() {
                   <button
                     type="submit"
                     onClick={handleSubmit}
-                    className="chatSubmitButton"
+                    className="chatSubmitButton md:w-[70px]"
                     disabled={disabledBtn(newMessage)}
                   >
-                    Send
+                    < SendIcon />
                   </button>
                 </form>
               </>
@@ -171,7 +176,7 @@ export default function Messenger() {
             )}
           </div>
         </div>
-        <div className="chatOnline">
+        <div className="chatOnline hidden md:flex">
           <div className="chatOnlineWrapper">
             <ChatOnline
               onlineUsers={onlineUsers}
