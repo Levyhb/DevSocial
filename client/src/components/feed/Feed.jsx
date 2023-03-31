@@ -27,7 +27,7 @@ export default function Feed({ username }) {
   }, [username, user._id]);
 
   return (
-    <div className="feed">
+    <div className="feed md:flex w-90%">
       <div className="feedWrapper">
         {(!username || username === user.username) && <Share />}
         {!posts && <LoadingPost />}
