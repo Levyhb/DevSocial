@@ -3,7 +3,7 @@ import Online from "../online/Online";
 import { useEffect, useRef } from "react";
 import axios from "axios";
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove } from "@mui/icons-material";
@@ -86,11 +86,13 @@ export default function Rightbar({ user }) {
   const HomeRightBar = () => {
     return (
       <>
-        <div>
-          <p className="rightbar-ad-title">Connect with your friends around the world</p>
-          <img className="rightbarAd" src={`${PF}ad.png`} alt="" />
+        <div className="hidden md:flex content-center flex-col">
+          <div >
+            <p className="rightbar-ad-title">Connect with your friends around the world</p>
+            <img className="rightbarAd" src={`${PF}ad.png`} alt="" />
+          </div>
+          <Online onlineUsers={onlineUsers} currentId={currentUser._id} />
         </div>
-        <Online onlineUsers={onlineUsers} currentId={currentUser._id} />
       </>
     );
   };
@@ -99,7 +101,7 @@ export default function Rightbar({ user }) {
     return (
       <>
         {user.username !== currentUser.username && (
-          <div className="follow-wrapper">
+          <div className="follow-wrapper flex justify-center">
             <button className="rightbarFollowButton" onClick={handlefollow}>
               {followed ? "Unfollow" : "Follow"}
               {followed ? <Remove /> : <Add />}
@@ -109,8 +111,8 @@ export default function Rightbar({ user }) {
             </button>
           </div>
         )}
-        <h4 className="rightbarTitle">User Information</h4>
-        <div className="rightbarInfo">
+        <h4 className="rightbarTitle text-center lg:text-left">User Information</h4>
+        <div className="rightbarInfo flex flex-col items-center  lg:block">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
             <span className="rightbarInfoValues">{user.city}</span>
@@ -130,11 +132,11 @@ export default function Rightbar({ user }) {
             </span>
           </div>
         </div>
-        <h4 className="rightbarTitle">User Friends</h4>
-        <div className="rightbarFollowings">
+        <h4 className="rightbarTitle text-center md:text-left">User Friends</h4>
+        <div className="rightbarFollowings grid grid-cols-3 grid-rows-2 gap-3 overflow-y-scroll">
           {friends.map((friend) => (
             <Link to={"/profile/" + friend.username} key={friend._id}>
-              <div className="rightbarFollowing">
+              <div className="rightbarFollowing ">
                 <img
                   src={
                     friend.profilePicture
@@ -142,7 +144,7 @@ export default function Rightbar({ user }) {
                       : PF + "person/noAvatar.png"
                   }
                   alt=""
-                  className="rightbarFollowingImg"
+                  className="rightbarFollowingImg w-20 h-20 md:w-24 md:h-24"
                 />
                 <span className="rightbarFollowingName">{friend.username}</span>
               </div>
@@ -154,15 +156,22 @@ export default function Rightbar({ user }) {
   };
 
   return (
-    <div className="rightbar">
+    <>
+    
+    {window.location.pathname === "/" ||
+    window.location.pathname === "/search" ? (
+    <div className="rightbar hidden sm:flex">
       <div className="rightbarWrapper">
-        {window.location.pathname === "/" ||
-        window.location.pathname === "/search" ? (
-          <HomeRightBar />
-        ) : (
-          <ProfileRightBar />
-        )}
+        <HomeRightBar />
       </div>
-    </div>
+      </div>
+    ) : (
+      <div className="rightbar ">
+        <div className="rightbarWrapper">
+          <ProfileRightBar />
+        </div>
+      </div>
+    )}
+    </>
   );
 }

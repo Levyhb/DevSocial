@@ -12,7 +12,7 @@ import SchoolIcon from "@mui/icons-material/School";
 
 export default function Sidebar() {
   return (
-    <div className="sidebar">
+    <div className="sidebar hidden lg:flex ">
       <div className="sidebarWrapper">
         <ul className="sidebarList">
           <li className="sidebarListItem">
