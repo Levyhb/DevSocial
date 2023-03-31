@@ -4,7 +4,7 @@ import { Avatar, Skeleton, Typography } from "@mui/material";
 export default function LoadingPost() {
   return (
     <>
-    <div style={{ display: "flex", gap: "10px" }}>
+    <div style={{ display: "flex", gap: "10px" }} className="animate-pulse">
           <Skeleton variant="circular">
             <Avatar />
           </Skeleton>
