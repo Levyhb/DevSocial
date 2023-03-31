@@ -4,7 +4,7 @@ DevSocial é uma aplicação full stack, desenvolvido com ReactJs, NodeJs, Mongo
 
 ## Stacks utilizada
 
-**Front-end:** - React.js, CSS3, ContextAPI
+**Front-end:** - React.js, Tailwind Css, ContextAPI
 
 **Back-end:** - Node.js, MongoDB, Express
 
