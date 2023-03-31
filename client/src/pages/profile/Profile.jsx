@@ -181,9 +181,9 @@ export default function Profile() {
               </Dialog.Root>
             )}
           </div>
-          <div className="profileRightBottom">
-            <Feed username={username} />
-            <Rightbar user={user} />
+          <div className="profileRightBottom flex-col-reverse md:flex-row">
+            <Feed username={username}/>
+            <Rightbar user={user}/>
           </div>
         </div>
       </div>
