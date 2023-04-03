@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const Conversation = require("../models/Conversation");
 const conversationController = require("../controller/conversations.controller");
 
 //new conv

@@ -87,8 +87,10 @@ export default function Rightbar({ user }) {
     return (
       <>
         <div className="hidden md:flex content-center flex-col">
-          <div >
-            <p className="rightbar-ad-title">Connect with your friends around the world</p>
+          <div>
+            <p className="rightbar-ad-title">
+              Connect with your friends around the world
+            </p>
             <img className="rightbarAd" src={`${PF}ad.png`} alt="" />
           </div>
           <Online onlineUsers={onlineUsers} currentId={currentUser._id} />
@@ -111,7 +113,9 @@ export default function Rightbar({ user }) {
             </button>
           </div>
         )}
-        <h4 className="rightbarTitle text-center lg:text-left">User Information</h4>
+        <h4 className="rightbarTitle text-center lg:text-left">
+          User Information
+        </h4>
         <div className="rightbarInfo flex flex-col items-center  lg:block">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
@@ -157,21 +161,20 @@ export default function Rightbar({ user }) {
 
   return (
     <>
-    
-    {window.location.pathname === "/" ||
-    window.location.pathname === "/search" ? (
-    <div className="rightbar hidden sm:flex">
-      <div className="rightbarWrapper">
-        <HomeRightBar />
-      </div>
-      </div>
-    ) : (
-      <div className="rightbar ">
-        <div className="rightbarWrapper">
-          <ProfileRightBar />
+      {window.location.pathname === "/" ||
+      window.location.pathname === "/search" ? (
+        <div className="rightbar hidden sm:flex">
+          <div className="rightbarWrapper">
+            <HomeRightBar />
+          </div>
         </div>
-      </div>
-    )}
+      ) : (
+        <div className="rightbar ">
+          <div className="rightbarWrapper">
+            <ProfileRightBar />
+          </div>
+        </div>
+      )}
     </>
   );
 }

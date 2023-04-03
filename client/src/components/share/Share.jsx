@@ -16,7 +16,7 @@ export default function Share() {
   const { user } = useContext(AuthContext);
   const AR = process.env.REACT_APP_API_REF;
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const [desc, setDesc] = useState('');
+  const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
 
   const submitHandler = async (e) => {
@@ -47,7 +47,7 @@ export default function Share() {
     }
   };
 
-  const verify = !file && !desc ;
+  const verify = !file && !desc;
 
   return (
     <div className="share">
@@ -56,7 +56,7 @@ export default function Share() {
           <img
             src={
               user.profilePicture
-                ? PF+user.profilePicture
+                ? PF + user.profilePicture
                 : PF + "person/noAvatar.png"
             }
             alt="person"
@@ -73,9 +73,13 @@ export default function Share() {
           </textarea>
         </div>
         <hr className="shareHr" />
-        { file && (
+        {file && (
           <div className="shareImgContainer">
-            <img src={URL.createObjectURL(file)} className="shareImg" alt="share img" />
+            <img
+              src={URL.createObjectURL(file)}
+              className="shareImg"
+              alt="share img"
+            />
             <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
           </div>
         )}
@@ -106,7 +110,7 @@ export default function Share() {
               <span className="shareOptionText">Feelings</span>
             </div>
           </div>
-          <button className="shareButton" type="submit" disabled={ verify }>
+          <button className="shareButton" type="submit" disabled={verify}>
             Share
           </button>
         </form>
