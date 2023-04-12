@@ -1,5 +1,6 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
+const { removeImg } = require("../utils/removeImg");
 
 const newPost = async (body) => {
   const newPost = new Post(body);
@@ -28,6 +29,7 @@ const updatePost = async (body, id) => {
 const deletePost = async (id) => {
   try {
     const post = await Post.findById(id);
+    await removeImg(post.img)
     await post.deleteOne();
     return { type: 200, response: "Post has been deleted" };
   } catch (err) {
