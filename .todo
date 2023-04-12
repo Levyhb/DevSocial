@@ -1,0 +1,20 @@
+#1 Prioridades:
+- Bugs
+
+
+#2 A fazer: 
+## Frontend:
+- Apagar comentários
+- Editar Post
+- Passar para TypeScript
+## Backend
+- Passar para TypeScript
+- Armazenar imagens na nuvens
+
+
+#3 Concluído:
+- Deploy da Aplicação (Front + Back)
+- Alteração na paleta de cores e titulo
+- Arquitetura MSC
+- Responsividade Tailwind css
+- Remover imagens do back-end
