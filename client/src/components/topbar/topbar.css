@@ -139,14 +139,14 @@
   width: 200px;
   height: 200px;
   position: absolute;
-  right: 4%;
+  right: 1%;
   top: 100%;
-  border-radius: 10px;
+  border-radius: 10px 0px 10px 10px;
   padding: 20px;
 }
 
 .configBoxItem {
-  color: black;
+  color: var(--main-bg-dark);
   display: flex;
   text-decoration: none;
   align-items: center;
