@@ -3,13 +3,18 @@
 
 
 #2 A fazer: 
+
 ## Frontend:
 - Apagar comentários
 - Editar Post
-- Passar para TypeScript
+- Implementar testes
+- JWT
+- Dark mode
+
 ## Backend
+- Apagar comentários
 - Armazenar imagens na nuvens
-- Passar para TypeScript
+- Implementar testes
 
 
 #3 Concluído:
