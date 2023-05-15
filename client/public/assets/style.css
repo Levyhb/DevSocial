@@ -11,3 +11,14 @@
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
+
+
+.whiteMode {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.darkMode {
+  background-color: #0f120ffa;
+  color: rgb(228, 228, 228);
+}

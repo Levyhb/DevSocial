@@ -2,3 +2,7 @@
   animation: fadeInDown;
   animation-duration: 1s;
 }
+
+.commentText {
+  color: black;
+}

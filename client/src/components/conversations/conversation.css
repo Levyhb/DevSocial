@@ -8,6 +8,8 @@
 
 .conversation:hover {
   background-color: rgb(248, 247, 247);
+  color: black;
+  transition: 0.4s;
 }
 
 .conversationImg {

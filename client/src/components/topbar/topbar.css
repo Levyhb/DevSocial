@@ -128,3 +128,35 @@
   animation: fadeInDown;
   animation-duration: 1.2s;
 }
+
+
+.configBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgb(238, 241, 238);
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  right: 4%;
+  top: 100%;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.configBoxItem {
+  color: black;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  width: 100%;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.configBox span:hover, .configBox a:hover {
+  background-color: rgb(226, 226, 226);
+}
