@@ -25,7 +25,11 @@ export default function Register() {
         await axios.post(`${AR}/auth/register`, user);
         navigate("/login")
       } catch (err) {
-        console.log(err);
+        if (err.response.data === 'Email is already registered') {
+          window.alert("Email already registered")
+        } else if (err.response.data === 'Username is already in use') {
+          window.alert("Username is already in use")
+        }
       }
     }
   };
