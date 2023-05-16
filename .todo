@@ -9,13 +9,11 @@
 - Editar Post
 - Implementar testes
 - JWT
-- Dark mode
 
 ## Backend
 - Apagar comentários
 - Armazenar imagens na nuvens
 - Implementar testes
-
 
 #3 Concluído:
 - Deploy da Aplicação (Front + Back)
@@ -23,3 +21,4 @@
 - Arquitetura MSC
 - Responsividade Tailwind css
 - Remover imagens do back-end
+- Dark mode
