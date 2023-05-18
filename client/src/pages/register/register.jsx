@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useRef } from "react";
 import "./register.css";
 import { Link, useNavigate } from 'react-router-dom';
+import { notifyError } from "../../utils/notifyMessages"
 
 export default function Register() {
   const username = useRef();
@@ -25,11 +26,7 @@ export default function Register() {
         await axios.post(`${AR}/auth/register`, user);
         navigate("/login")
       } catch (err) {
-        if (err.response.data === 'Email is already registered') {
-          window.alert("Email already registered")
-        } else if (err.response.data === 'Username is already in use') {
-          window.alert("Username is already in use")
-        }
+        notifyError(err.response.data);
       }
     }
   };
